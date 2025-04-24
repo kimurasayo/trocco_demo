@@ -1,0 +1,165 @@
+---
+id: 65921
+name: analysis_lily_gree-lily_analysis_lily_custom_daily_card_possession
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: query
+  query: |-
+    create temp function target_date() as (date_sub(current_date('Asia/Tokyo'), interval 1 day));
+        create temp function latest_master_update_date() returns date as ((select max(dt) from `$project_id$.lily_master.MasterWeapon`));
+        create temp function convert_region(_db string) returns string as (
+            case _db
+                when 'lily' then 'JP'
+                when 'lily_ap' then 'AP'
+                when 'lily_kr' then 'KR'
+                else _db end
+        );
+        delete `$project_id$.analysis_lily_custom.daily_card_possession` where card_get_dt = '$target_date$';
+        insert `$project_id$.analysis_lily_custom.daily_card_possession` (
+                uid
+                , region
+                , master_card_label
+                , card_get_dt
+                , limit_break_lv
+                , record_update_datetime
+        )
+        with
+        --ガチャ
+        card_possession_gacha as (
+            select distinct
+                uid
+                , convert_region(_db) as region
+                , master_card_label
+                , dt as card_get_dt --後でminする
+                , 0 as limit_break_lv -- 後でmaxする。仮置き。
+            from `$project_id$.lily.user_card_get`
+            where dt = '$target_date$'
+        )
+        -- 限定交換所
+        , card_possession_limited as (
+            select distinct
+                uid
+                , convert_region(_db) as region
+                , split(master_shop_item_label, "_")[SAFE_OFFSET(2)] as master_card_label
+                , dt as card_get_dt --後でminする
+                , 0 as limit_break_lv -- 後でmaxする。仮置き。
+            from `$project_id$.lily.user_shop_limited_exchange`
+            where master_shop_label like "%Shop.Card%"
+                and dt = '$target_date$'
+        )
+        -- ストーリー配布の準備
+        , master_reward as (
+            select distinct
+                label as reward_label
+                , masterLabel as master_card_label
+            from `$project_id$.lily_master.MasterReward`
+            where dt = latest_master_update_date() and category = 9 --Card
+        )
+        -- ストーリー配布
+        , card_possession_story as (
+            select distinct
+                gr.uid
+                , convert_region(gr._db) as region
+                , mr.master_card_label
+                , gr.dt as card_get_dt --後でminする。
+                , 0 as limit_break_lv -- 後でmaxする。仮置き。
+            from `$project_id$.lily.user_reward_grant_partitioned_lua_story` gr
+                inner join master_reward mr
+                    on gr.reward_label = mr.reward_label
+            where dt = '$target_date$'
+        )
+        -- 限界突破ログ
+        , card_limit_break as (
+            select distinct
+                uid
+                , convert_region(_db) as region
+                , card_label as master_card_label
+                , min(dt) as card_get_dt -- 後でさらにminする。基本採用されないが、初期Aと初期SS茅森は1凸した日が獲得日となる。
+                , max(cast(limit_break_lv as int64)) as limit_break_lv
+            from `$project_id$.lily.user_card_limit_break`
+            where dt = '$target_date$'
+            group by all
+        )
+        -- 3パターン + 限界突破ログにしか居ないスタイル の情報を接続
+        , card_possession_all as (
+            select * from card_possession_gacha
+            union all
+            select * from card_possession_limited
+            union all
+            select * from card_possession_story
+            union all
+            select * from card_limit_break
+        )
+        -- 昨日のデータ（更新分）
+        , yest_daily_card_possession as
+        (
+            select distinct
+                uid
+                , region
+                , master_card_label
+                , min(card_get_dt) as card_get_dt
+                , max(limit_break_lv) as limit_break_lv
+            from card_possession_all
+            group by all
+        )
+        -- 昨日までのデータ
+        , snapshot_daily_card_possession as
+        (
+            select
+                uid
+                , region
+                , master_card_label
+                , card_get_dt
+                , limit_break_lv
+            from `$project_id$.analysis_lily_custom.daily_card_possession`
+            where card_get_dt = date_sub('$target_date$', interval 1 day)
+        )
+        select
+            uid
+            , region
+            , master_card_label
+            , cast(card_get_dt as date) as card_get_dt
+            , limit_break_lv
+            , current_datetime('Asia/Tokyo') as record_update_datetime
+        from
+        (
+            select distinct
+                uid
+                , region
+                , master_card_label
+                , min(card_get_dt) as card_get_dt
+                , max(limit_break_lv) as limit_break_lv
+            from
+            (
+                select distinct
+                    uid
+                    , region
+                    , master_card_label
+                    , card_get_dt
+                    , limit_break_lv
+                from yest_daily_card_possession
+                union all
+                select distinct
+                    uid
+                    , region
+                    , master_card_label
+                    , card_get_dt
+                    , limit_break_lv
+                from snapshot_daily_card_possession
+            )
+            group by
+                uid
+                , region
+                , master_card_label
+        )
+  location: asia-northeast1
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []
