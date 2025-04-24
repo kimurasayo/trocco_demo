@@ -1,0 +1,20 @@
+---
+id: 65924
+name: Git検証
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: SELECT 1
+  destination_dataset: kimura_test
+  destination_table: '0424'
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []
