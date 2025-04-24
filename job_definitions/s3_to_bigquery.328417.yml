@@ -1,0 +1,81 @@
+---
+id: 328417
+name: s3_to_bigquery
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: terraform
+    path_match_pattern: terraform_test.jsonl_test.gz
+    decompression_type: guess
+    skip_header_line: false
+    stop_when_file_not_found: false
+    custom_variables: []
+    incremental_loading_enabled: false
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: LF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: name
+        type: string
+      - name: address
+        type: json
+      - name: phone
+        type: json
+    decoders:
+    - type: gzip
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: s3_to_bigquery_example_table
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: address
+      src: address
+      default: ''
+      type: json
+    - name: phone
+      src: phone
+      default: ''
+      type: json
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

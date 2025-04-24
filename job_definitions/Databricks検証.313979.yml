@@ -1,0 +1,446 @@
+---
+id: 313979
+name: Databricks検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: mysql
+    mysql_connection:
+      id: 281
+      name: csdemo-CloudMySQL
+    database: test
+    query: select * from large_row
+    default_timezone: ''
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 420
+    use_legacy_datetime_code: false
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: databricks
+    databricks_connection:
+      id: 13
+      name: pN検証環境（CS Demo）
+    catalog_name: primenumer_aws_playground
+    schema_name: test_by_kimura
+    table: mysql_test
+    retry_limit: 12
+    retry_wait: 1000
+    mode: insert_direct
+    max_retry_wait: 1800000
+    default_timezone: Etc/UTC
+    column_options:
+    batch_size: 50
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: c0
+      src: c0
+      default: ''
+      type: string
+    - name: c1
+      src: c1
+      default: ''
+      type: string
+    - name: c2
+      src: c2
+      default: ''
+      type: string
+    - name: c3
+      src: c3
+      default: ''
+      type: string
+    - name: c4
+      src: c4
+      default: ''
+      type: string
+    - name: c5
+      src: c5
+      default: ''
+      type: string
+    - name: c6
+      src: c6
+      default: ''
+      type: string
+    - name: c7
+      src: c7
+      default: ''
+      type: string
+    - name: c8
+      src: c8
+      default: ''
+      type: string
+    - name: c9
+      src: c9
+      default: ''
+      type: string
+    - name: c10
+      src: c10
+      default: ''
+      type: string
+    - name: c11
+      src: c11
+      default: ''
+      type: string
+    - name: c12
+      src: c12
+      default: ''
+      type: string
+    - name: c13
+      src: c13
+      default: ''
+      type: string
+    - name: c14
+      src: c14
+      default: ''
+      type: string
+    - name: c15
+      src: c15
+      default: ''
+      type: string
+    - name: c16
+      src: c16
+      default: ''
+      type: string
+    - name: c17
+      src: c17
+      default: ''
+      type: string
+    - name: c18
+      src: c18
+      default: ''
+      type: string
+    - name: c19
+      src: c19
+      default: ''
+      type: string
+    - name: c20
+      src: c20
+      default: ''
+      type: string
+    - name: c21
+      src: c21
+      default: ''
+      type: string
+    - name: c22
+      src: c22
+      default: ''
+      type: string
+    - name: c23
+      src: c23
+      default: ''
+      type: string
+    - name: c24
+      src: c24
+      default: ''
+      type: string
+    - name: c25
+      src: c25
+      default: ''
+      type: string
+    - name: c26
+      src: c26
+      default: ''
+      type: string
+    - name: c27
+      src: c27
+      default: ''
+      type: string
+    - name: c28
+      src: c28
+      default: ''
+      type: string
+    - name: c29
+      src: c29
+      default: ''
+      type: string
+    - name: c30
+      src: c30
+      default: ''
+      type: string
+    - name: c31
+      src: c31
+      default: ''
+      type: string
+    - name: c32
+      src: c32
+      default: ''
+      type: string
+    - name: c33
+      src: c33
+      default: ''
+      type: string
+    - name: c34
+      src: c34
+      default: ''
+      type: string
+    - name: c35
+      src: c35
+      default: ''
+      type: string
+    - name: c36
+      src: c36
+      default: ''
+      type: string
+    - name: c37
+      src: c37
+      default: ''
+      type: string
+    - name: c38
+      src: c38
+      default: ''
+      type: string
+    - name: c39
+      src: c39
+      default: ''
+      type: string
+    - name: c40
+      src: c40
+      default: ''
+      type: string
+    - name: c41
+      src: c41
+      default: ''
+      type: string
+    - name: c42
+      src: c42
+      default: ''
+      type: string
+    - name: c43
+      src: c43
+      default: ''
+      type: string
+    - name: c44
+      src: c44
+      default: ''
+      type: string
+    - name: c45
+      src: c45
+      default: ''
+      type: string
+    - name: c46
+      src: c46
+      default: ''
+      type: string
+    - name: c47
+      src: c47
+      default: ''
+      type: string
+    - name: c48
+      src: c48
+      default: ''
+      type: string
+    - name: c49
+      src: c49
+      default: ''
+      type: string
+    - name: c50
+      src: c50
+      default: ''
+      type: string
+    - name: c51
+      src: c51
+      default: ''
+      type: string
+    - name: c52
+      src: c52
+      default: ''
+      type: string
+    - name: c53
+      src: c53
+      default: ''
+      type: string
+    - name: c54
+      src: c54
+      default: ''
+      type: string
+    - name: c55
+      src: c55
+      default: ''
+      type: string
+    - name: c56
+      src: c56
+      default: ''
+      type: string
+    - name: c57
+      src: c57
+      default: ''
+      type: string
+    - name: c58
+      src: c58
+      default: ''
+      type: string
+    - name: c59
+      src: c59
+      default: ''
+      type: string
+    - name: c60
+      src: c60
+      default: ''
+      type: string
+    - name: c61
+      src: c61
+      default: ''
+      type: string
+    - name: c62
+      src: c62
+      default: ''
+      type: string
+    - name: c63
+      src: c63
+      default: ''
+      type: string
+    - name: c64
+      src: c64
+      default: ''
+      type: string
+    - name: c65
+      src: c65
+      default: ''
+      type: string
+    - name: c66
+      src: c66
+      default: ''
+      type: string
+    - name: c67
+      src: c67
+      default: ''
+      type: string
+    - name: c68
+      src: c68
+      default: ''
+      type: string
+    - name: c69
+      src: c69
+      default: ''
+      type: string
+    - name: c70
+      src: c70
+      default: ''
+      type: string
+    - name: c71
+      src: c71
+      default: ''
+      type: string
+    - name: c72
+      src: c72
+      default: ''
+      type: string
+    - name: c73
+      src: c73
+      default: ''
+      type: string
+    - name: c74
+      src: c74
+      default: ''
+      type: string
+    - name: c75
+      src: c75
+      default: ''
+      type: string
+    - name: c76
+      src: c76
+      default: ''
+      type: string
+    - name: c77
+      src: c77
+      default: ''
+      type: string
+    - name: c78
+      src: c78
+      default: ''
+      type: string
+    - name: c79
+      src: c79
+      default: ''
+      type: string
+    - name: c80
+      src: c80
+      default: ''
+      type: string
+    - name: c81
+      src: c81
+      default: ''
+      type: string
+    - name: c82
+      src: c82
+      default: ''
+      type: string
+    - name: c83
+      src: c83
+      default: ''
+      type: string
+    - name: c84
+      src: c84
+      default: ''
+      type: string
+    - name: c85
+      src: c85
+      default: ''
+      type: string
+    - name: c86
+      src: c86
+      default: ''
+      type: string
+    - name: c87
+      src: c87
+      default: ''
+      type: string
+    - name: c88
+      src: c88
+      default: ''
+      type: string
+    - name: c89
+      src: c89
+      default: ''
+      type: string
+    - name: c90
+      src: c90
+      default: ''
+      type: string
+    - name: c91
+      src: c91
+      default: ''
+      type: string
+    - name: c92
+      src: c92
+      default: ''
+      type: string
+    - name: c93
+      src: c93
+      default: ''
+      type: string
+    - name: c94
+      src: c94
+      default: ''
+      type: string
+    - name: c95
+      src: c95
+      default: ''
+      type: string
+    - name: c96
+      src: c96
+      default: ''
+      type: string
+    - name: c97
+      src: c97
+      default: ''
+      type: string
+    - name: c98
+      src: c98
+      default: ''
+      type: string
+    - name: c99
+      src: c99
+      default: ''
+      type: string
+  is_runnable_concurrently: true
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

@@ -1,0 +1,102 @@
+---
+id: 283557
+name: サブテーブルテスト (Copy)
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '219'
+    fields:
+    - name: "$id"
+      type: long
+    - name: "$revision"
+      type: long
+    - name: カテゴリー
+      type: string
+    - name: ステータス
+      type: string
+    - name: レコード番号
+      type: long
+    - name: 作成日時
+      type: timestamp
+    - name: 作成者
+      type: string
+    - name: 作業者
+      type: string
+    - name: 入金予定日
+      type: string
+    - name: 入金差額
+      type: double
+    - name: 入金日
+      type: string
+    - name: 入金額
+      type: double
+    - name: 受注先会社名
+      type: string
+    - name: 更新日時
+      type: timestamp
+    - name: 更新者
+      type: string
+    - name: 請求予定日
+      type: string
+    - name: 請求日
+      type: string
+    - name: 請求金額_消費税率
+      type: string
+    - name: 請求金額_税抜_
+      type: double
+    - name: 請求金額_税込_
+      type: double
+    - name: 請求_入金情報
+      type: json
+    guest_space_id: ''
+    query: ''
+    expand_subtable: true
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '1115'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: 作成日時
+      src: 作成日時
+      default: ''
+      type: string
+    string_replacement_columns:
+      target_columns:
+        作成日時:
+        - type: regexp_replace
+          pattern: "^(\\d{4})-(\\d{2})-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d{9} \\+\\d{4}$"
+          to: "$1-$2-01"
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

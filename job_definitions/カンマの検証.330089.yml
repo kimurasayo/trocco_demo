@@ -1,0 +1,98 @@
+---
+id: 330089
+name: カンマの検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=0#gid=0
+    worksheet_title: 名簿
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: id
+      type: long
+    - name: name
+      type: string
+    - name: age
+      type: long
+    - name: 日付
+      type: string
+    - name: 数値
+      type: string
+    - name: Clicks
+      type: string
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '0415'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options:
+    - name: Clicks
+      type: INTEGER
+      mode: NULLABLE
+      description: ''
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: age
+      src: age
+      default: ''
+      type: long
+    - name: 日付
+      src: 日付
+      default: ''
+      type: string
+    - name: 数値
+      src: 数値
+      default: ''
+      type: string
+    - name: Clicks
+      src: Clicks
+      default: ''
+      type: string
+    string_replacement_columns:
+      target_columns:
+        Clicks:
+        - type: regexp_replace
+          pattern: ","
+          to: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

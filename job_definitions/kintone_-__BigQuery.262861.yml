@@ -1,0 +1,136 @@
+---
+id: 262861
+name: kintone -> BigQuery
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '235'
+    fields:
+    - name: "$id"
+      type: long
+    - name: "$revision"
+      type: long
+    - name: カテゴリー
+      type: string
+    - name: ステータス
+      type: string
+    - name: レコード番号
+      type: long
+    - name: 作成日時
+      type: timestamp
+    - name: 作成者
+      type: string
+    - name: 作業者
+      type: string
+    - name: 数値
+      type: double
+    - name: 数値_0
+      type: double
+    - name: 文字列__1行_
+      type: string
+    - name: 更新日時
+      type: timestamp
+    - name: 更新者
+      type: string
+    - name: 計算
+      type: string
+    guest_space_id: ''
+    query: ''
+    expand_subtable: true
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: kintone_customer_info
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options:
+    - name: 計算
+      type: NUMERIC
+      mode: NULLABLE
+      description: ''
+    - name: 数値
+      type: NUMERIC
+      mode: NULLABLE
+      description: ''
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: カテゴリー
+      src: カテゴリー
+      default: ''
+      type: string
+    - name: ステータス
+      src: ステータス
+      default: ''
+      type: string
+    - name: レコード番号
+      src: レコード番号
+      default: ''
+      type: long
+    - name: 作成日時
+      src: 作成日時
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 作成者
+      src: 作成者
+      default: ''
+      type: string
+    - name: 作業者
+      src: 作業者
+      default: ''
+      type: string
+    - name: 数値
+      src: 数値
+      default: ''
+      type: double
+    - name: 数値_0
+      src: 数値_0
+      default: ''
+      type: double
+    - name: 文字列__1行_
+      src: 文字列__1行_
+      default: ''
+      type: string
+    - name: 更新日時
+      src: 更新日時
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 更新者
+      src: 更新者
+      default: ''
+      type: string
+    - name: 計算
+      src: 計算
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

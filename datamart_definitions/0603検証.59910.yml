@@ -1,0 +1,46 @@
+---
+id: 59910
+name: 0603検証
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    SELECT
+            adid
+            ,UID
+            ,os_name
+            ,os_version
+            ,activity_kind
+            ,network_name
+            ,event
+            ,event_name
+            ,DATETIME(TIMESTAMP_SECONDS(CAST(installed_at AS INT64)), 'Asia/Tokyo') AS installed_at
+            ,DATETIME(TIMESTAMP_SECONDS(CAST(created_at AS INT64)), 'Asia/Tokyo') AS created_at
+            ,push_token
+            ,creative_name
+            ,campaign_name
+            ,DATETIME(TIMESTAMP_SECONDS(CAST(uninstalled_at AS INT64)), 'Asia/Tokyo') AS uninstalled_at
+            ,time_to_uninstall
+            ,DATETIME(TIMESTAMP_SECONDS(CAST(reinstalled_at AS INT64)), 'Asia/Tokyo') AS reinstalled_at
+            ,time_to_reinstall
+            ,app_name
+            ,AID
+            ,DATETIME(TIMESTAMP_SECONDS(CAST(click_time AS INT64)), 'Asia/Tokyo') AS click_time
+            ,app_token
+            ,adgroup_name
+
+        FROM
+            kimura_test.0306
+  destination_dataset: kimura_test
+  destination_table: 0306_dwh
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

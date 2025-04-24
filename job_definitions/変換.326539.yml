@@ -1,0 +1,114 @@
+---
+id: 326539
+name: 変換
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: sample_deals_jp.json
+    parser:
+      type: jsonpath
+      root: "$"
+      default_timezone: UTC
+      columns:
+      - name: id
+        type: long
+      - name: properties
+        type: json
+      - name: createdAt
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%N"
+      - name: updatedAt
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%N"
+      - name: archived
+        type: boolean
+    decoders: []
+  out:
+    type: google_drive
+    google_drive_connection:
+      id: 325
+      name: csdemo-GoogleDrive-kimura
+    main_folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
+    file_name: sample_deals
+    custom_variables: []
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: properties
+      src: properties
+      default: ''
+      type: json
+      expand_json:
+        expanded_columns:
+        - name: dealname
+          json_path: dealname
+          type: string
+        - name: amount
+          json_path: amount
+          type: string
+        - name: dealstage
+          json_path: dealstage
+          type: string
+        - name: pipeline
+          json_path: pipeline
+          type: string
+        - name: closedate
+          json_path: closedate
+          type: string
+        - name: createdate
+          json_path: createdate
+          type: string
+        - name: hs_lastmodifieddate
+          json_path: hs_lastmodifieddate
+          type: string
+        - name: hubspot_owner_id
+          json_path: hubspot_owner_id
+          type: string
+        - name: dealtype
+          json_path: dealtype
+          type: string
+        - name: description
+          json_path: description
+          type: string
+        - name: hs_object_id
+          json_path: hs_object_id
+          type: string
+        keep_expanding_json_column: false
+    - name: createdAt
+      src: createdAt
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%N"
+    - name: updatedAt
+      src: updatedAt
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%N"
+    - name: archived
+      src: archived
+      default: ''
+      type: boolean
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

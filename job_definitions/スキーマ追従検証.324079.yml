@@ -1,0 +1,218 @@
+---
+id: 324079
+name: スキーマ追従検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=0#gid=0
+    worksheet_title: シート15
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: name
+      type: string
+    - name: date
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: create_at
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S"
+    - name: other
+      type: string
+    - name: number
+      type: long
+    - name: add
+      type: string
+    - name: id
+      type: string
+    - name: sample1
+      type: string
+    - name: sample2
+      type: string
+    - name: sample3
+      type: string
+    - name: sample4
+      type: string
+    - name: sample5
+      type: string
+    - name: sample6
+      type: string
+    - name: sample7
+      type: string
+    - name: sample8
+      type: string
+    - name: sample9
+      type: string
+    - name: sample10
+      type: string
+    - name: sample11
+      type: string
+    - name: sample12
+      type: string
+    - name: sample13
+      type: string
+    - name: sample14
+      type: string
+    - name: sample15
+      type: string
+    - name: sample16
+      type: string
+    - name: sample17
+      type: string
+    - name: sample18
+      type: string
+    - name: sample19
+      type: string
+    - name: sample20
+      type: string
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: 0317_spreadsheets
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: date
+      src: date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: create_at
+      src: create_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: other
+      src: other
+      default: ''
+      type: string
+    - name: number
+      src: number
+      default: ''
+      type: long
+    - name: add
+      src: add
+      default: ''
+      type: string
+    - name: id
+      src: id
+      default: ''
+      type: string
+    - name: sample1
+      src: sample1
+      default: ''
+      type: string
+    - name: sample2
+      src: sample2
+      default: ''
+      type: string
+    - name: sample3
+      src: sample3
+      default: ''
+      type: string
+    - name: sample4
+      src: sample4
+      default: ''
+      type: string
+    - name: sample5
+      src: sample5
+      default: ''
+      type: string
+    - name: sample6
+      src: sample6
+      default: ''
+      type: string
+    - name: sample7
+      src: sample7
+      default: ''
+      type: string
+    - name: sample8
+      src: sample8
+      default: ''
+      type: string
+    - name: sample9
+      src: sample9
+      default: ''
+      type: string
+    - name: sample10
+      src: sample10
+      default: ''
+      type: string
+    - name: sample11
+      src: sample11
+      default: ''
+      type: string
+    - name: sample12
+      src: sample12
+      default: ''
+      type: string
+    - name: sample13
+      src: sample13
+      default: ''
+      type: string
+    - name: sample14
+      src: sample14
+      default: ''
+      type: string
+    - name: sample15
+      src: sample15
+      default: ''
+      type: string
+    - name: sample16
+      src: sample16
+      default: ''
+      type: string
+    - name: sample17
+      src: sample17
+      default: ''
+      type: string
+    - name: sample18
+      src: sample18
+      default: ''
+      type: string
+    - name: sample19
+      src: sample19
+      default: ''
+      type: string
+    - name: sample20
+      src: sample20
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

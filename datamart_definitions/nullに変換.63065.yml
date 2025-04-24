@@ -1,0 +1,25 @@
+---
+id: 63065
+name: nullに変換
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    SELECT
+        `数値`,
+        `数値_0`,
+        CAST(NULLIF(`計算`, "")AS NUMERIC) AS `計算`
+    FROM `systemn-playground.kimura_test.kintone_customer_info` LIMIT 1000
+  destination_dataset: kimura_test
+  destination_table: kintone_customer_info_dm
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

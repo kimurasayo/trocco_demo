@@ -1,0 +1,89 @@
+---
+id: 284681
+name: スプシ接続検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/14kzL3EhMXAYiy4Iz5MYABc714eQPjExslX58EDQ1hTQ/edit?gid=0#gid=0
+    worksheet_title: 接続情報
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: コネクタ
+      type: string
+    - name: フロントエンド
+      type: string
+    - name: 廃止/廃止予定
+      type: boolean
+    - name: 秘匿情報対応
+      type: string
+    - name: Test
+      type: string
+    - name: OAuth
+      type: boolean
+    - name: PrivateLink
+      type: boolean
+    - name: 接続確認
+      type: boolean
+    custom_variables: []
+  out:
+    type: google_spreadsheets_v4
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_id: 14kzL3EhMXAYiy4Iz5MYABc714eQPjExslX58EDQ1hTQ
+    worksheet_title: out
+    timezone: Asia/Tokyo
+    value_input_option: USER_ENTERED
+    mode: append
+    sorts: []
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: コネクタ
+      src: コネクタ
+      default: ''
+      type: string
+    - name: フロントエンド
+      src: フロントエンド
+      default: ''
+      type: string
+    - name: 廃止/廃止予定
+      src: 廃止/廃止予定
+      default: ''
+      type: boolean
+    - name: 秘匿情報対応
+      src: 秘匿情報対応
+      default: ''
+      type: string
+    - name: Test
+      src: Test
+      default: ''
+      type: string
+    - name: OAuth
+      src: OAuth
+      default: ''
+      type: boolean
+    - name: PrivateLink
+      src: PrivateLink
+      default: ''
+      type: boolean
+    - name: 接続確認
+      src: 接続確認
+      default: ''
+      type: boolean
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

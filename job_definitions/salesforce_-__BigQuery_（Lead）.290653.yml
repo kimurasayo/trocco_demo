@@ -1,0 +1,847 @@
+---
+id: 290653
+name: salesforce -> BigQuery （Lead）
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: soql_file
+    salesforce_connection:
+      id: 240
+      name: csdemo-Salesforce[sandbox]
+    object: Lead
+    object_acquisition_method: soql
+    api_version: '54.0'
+    transfer_mode: type_interfence
+    include_deleted_or_archived_records: false
+    soql: |-
+      SELECT
+        Id,
+        IsDeleted,
+        MasterRecordId,
+        LastName,
+        FirstName,
+        Salutation,
+        Name,
+        Title,
+        Company,
+        Street,
+        City,
+        State,
+        PostalCode,
+        Country,
+        Latitude,
+        Longitude,
+        GeocodeAccuracy,
+        Phone,
+        MobilePhone,
+        Email,
+        Website,
+        PhotoUrl,
+        Description,
+        LeadSource,
+        Status,
+        Industry,
+        Rating,
+        AnnualRevenue,
+        NumberOfEmployees,
+        OwnerId,
+        HasOptedOutOfEmail,
+        IsConverted,
+        ConvertedDate,
+        ConvertedAccountId,
+        ConvertedContactId,
+        ConvertedOpportunityId,
+        IsUnreadByOwner,
+        CreatedDate,
+        CreatedById,
+        LastModifiedDate,
+        LastModifiedById,
+        SystemModstamp,
+        LastActivityDate,
+        LastViewedDate,
+        LastReferencedDate,
+        Jigsaw,
+        JigsawContactId,
+        EmailBouncedReason,
+        EmailBouncedDate,
+        IndividualId,
+        InquiryType__c,
+        JobRole__c,
+        Purpose__c,
+        sfLma__Subscriber_Org_Type__c,
+        Department__c,
+        InquiryMemo__c,
+        LeadCampaign__c,
+        InquiryDate__c,
+        IsConverted__c,
+        IsExcluded__c,
+        IsConvertedToOpportunity__c,
+        LostReason__c,
+        AICEAS__c,
+        FavorComment__c,
+        DaysOfLastActivity__c,
+        NAnalyticsUserId__c,
+        NAnalyticsSessionId__c,
+        NAnalyticsPvNum__c,
+        TargetUsage__c,
+        Closingmonth__c,
+        DevSumi_Researvation__c,
+        CapitalStock__c,
+        LG__c,
+        CompanySize__c,
+        Field6__c,
+        Field4__c,
+        Field3__c,
+        apointment_day__c,
+        HandsOnSchedule__c,
+        TransfarFrom__c,
+        TransferTo__c,
+        LatestMemo__c,
+        DES__c,
+        LostReasonDetail__c,
+        BI__c,
+        ManualMedium__c,
+        ManualSource__c,
+        ManualCampaign__c,
+        Field7__c,
+        Field8__c,
+        LP_Blog_FB__c,
+        TestLeadSource__c,
+        LeadCategory__c,
+        LegacyLeadSource__c,
+        Field9__c,
+        Field10__c,
+        OnlineCampaign__c,
+        OnlineMedium__c,
+        OnlineSource__c,
+        LegacyLeadCampaign__c,
+        InquiryFrom__c,
+        IsVisited__c,
+        Industry__c,
+        Industry_new__c,
+        Industry_big__c,
+        Last_lead__c,
+        application__c,
+        Tech_company__c,
+        business_category__c
+      FROM Lead
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: Id
+        type: string
+      - name: IsDeleted
+        type: boolean
+      - name: MasterRecordId
+        type: string
+      - name: LastName
+        type: string
+      - name: FirstName
+        type: string
+      - name: Salutation
+        type: string
+      - name: Name
+        type: string
+      - name: Title
+        type: string
+      - name: Company
+        type: string
+      - name: Street
+        type: string
+      - name: City
+        type: string
+      - name: State
+        type: string
+      - name: PostalCode
+        type: string
+      - name: Country
+        type: string
+      - name: Latitude
+        type: string
+      - name: Longitude
+        type: string
+      - name: GeocodeAccuracy
+        type: string
+      - name: Phone
+        type: string
+      - name: MobilePhone
+        type: string
+      - name: Email
+        type: string
+      - name: Website
+        type: string
+      - name: PhotoUrl
+        type: string
+      - name: Description
+        type: string
+      - name: LeadSource
+        type: string
+      - name: Status
+        type: string
+      - name: Industry
+        type: string
+      - name: Rating
+        type: string
+      - name: AnnualRevenue
+        type: string
+      - name: NumberOfEmployees
+        type: string
+      - name: OwnerId
+        type: string
+      - name: HasOptedOutOfEmail
+        type: boolean
+      - name: IsConverted
+        type: boolean
+      - name: ConvertedDate
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: ConvertedAccountId
+        type: string
+      - name: ConvertedContactId
+        type: string
+      - name: ConvertedOpportunityId
+        type: string
+      - name: IsUnreadByOwner
+        type: boolean
+      - name: CreatedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: CreatedById
+        type: string
+      - name: LastModifiedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastModifiedById
+        type: string
+      - name: SystemModstamp
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastActivityDate
+        type: string
+      - name: LastViewedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: LastReferencedDate
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: Jigsaw
+        type: string
+      - name: JigsawContactId
+        type: string
+      - name: EmailBouncedReason
+        type: string
+      - name: EmailBouncedDate
+        type: string
+      - name: IndividualId
+        type: string
+      - name: InquiryType__c
+        type: string
+      - name: JobRole__c
+        type: string
+      - name: Purpose__c
+        type: string
+      - name: sfLma__Subscriber_Org_Type__c
+        type: string
+      - name: Department__c
+        type: string
+      - name: InquiryMemo__c
+        type: string
+      - name: LeadCampaign__c
+        type: string
+      - name: InquiryDate__c
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: IsConverted__c
+        type: boolean
+      - name: IsExcluded__c
+        type: boolean
+      - name: IsConvertedToOpportunity__c
+        type: boolean
+      - name: LostReason__c
+        type: string
+      - name: AICEAS__c
+        type: string
+      - name: FavorComment__c
+        type: string
+      - name: DaysOfLastActivity__c
+        type: string
+      - name: NAnalyticsUserId__c
+        type: string
+      - name: NAnalyticsSessionId__c
+        type: string
+      - name: NAnalyticsPvNum__c
+        type: string
+      - name: TargetUsage__c
+        type: string
+      - name: Closingmonth__c
+        type: string
+      - name: DevSumi_Researvation__c
+        type: string
+      - name: CapitalStock__c
+        type: string
+      - name: LG__c
+        type: string
+      - name: CompanySize__c
+        type: string
+      - name: Field6__c
+        type: boolean
+      - name: Field4__c
+        type: boolean
+      - name: Field3__c
+        type: string
+      - name: apointment_day__c
+        type: string
+      - name: HandsOnSchedule__c
+        type: string
+      - name: TransfarFrom__c
+        type: string
+      - name: TransferTo__c
+        type: string
+      - name: LatestMemo__c
+        type: string
+      - name: DES__c
+        type: string
+      - name: LostReasonDetail__c
+        type: string
+      - name: BI__c
+        type: string
+      - name: ManualMedium__c
+        type: string
+      - name: ManualSource__c
+        type: string
+      - name: ManualCampaign__c
+        type: string
+      - name: Field7__c
+        type: string
+      - name: Field8__c
+        type: string
+      - name: LP_Blog_FB__c
+        type: string
+      - name: TestLeadSource__c
+        type: string
+      - name: LeadCategory__c
+        type: string
+      - name: LegacyLeadSource__c
+        type: string
+      - name: Field9__c
+        type: string
+      - name: Field10__c
+        type: string
+      - name: OnlineCampaign__c
+        type: string
+      - name: OnlineMedium__c
+        type: string
+      - name: OnlineSource__c
+        type: string
+      - name: LegacyLeadCampaign__c
+        type: string
+      - name: InquiryFrom__c
+        type: string
+      - name: IsVisited__c
+        type: double
+      - name: Industry__c
+        type: string
+      - name: Industry_new__c
+        type: string
+      - name: Industry_big__c
+        type: string
+      - name: Last_lead__c
+        type: string
+      - name: application__c
+        type: string
+      - name: Tech_company__c
+        type: string
+      - name: business_category__c
+        type: string
+      quote: "\""
+      escape: "\""
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: salesforce_lead
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: Id
+      src: Id
+      default: ''
+      type: string
+    - name: IsDeleted
+      src: IsDeleted
+      default: ''
+      type: boolean
+    - name: MasterRecordId
+      src: MasterRecordId
+      default: ''
+      type: string
+    - name: LastName
+      src: LastName
+      default: ''
+      type: string
+    - name: FirstName
+      src: FirstName
+      default: ''
+      type: string
+    - name: Salutation
+      src: Salutation
+      default: ''
+      type: string
+    - name: Name
+      src: Name
+      default: ''
+      type: string
+    - name: Title
+      src: Title
+      default: ''
+      type: string
+    - name: Company
+      src: Company
+      default: ''
+      type: string
+    - name: Street
+      src: Street
+      default: ''
+      type: string
+    - name: City
+      src: City
+      default: ''
+      type: string
+    - name: State
+      src: State
+      default: ''
+      type: string
+    - name: PostalCode
+      src: PostalCode
+      default: ''
+      type: string
+    - name: Country
+      src: Country
+      default: ''
+      type: string
+    - name: Latitude
+      src: Latitude
+      default: ''
+      type: string
+    - name: Longitude
+      src: Longitude
+      default: ''
+      type: string
+    - name: GeocodeAccuracy
+      src: GeocodeAccuracy
+      default: ''
+      type: string
+    - name: Phone
+      src: Phone
+      default: ''
+      type: string
+    - name: MobilePhone
+      src: MobilePhone
+      default: ''
+      type: string
+    - name: Email
+      src: Email
+      default: ''
+      type: string
+    - name: Website
+      src: Website
+      default: ''
+      type: string
+    - name: PhotoUrl
+      src: PhotoUrl
+      default: ''
+      type: string
+    - name: Description
+      src: Description
+      default: ''
+      type: string
+    - name: LeadSource
+      src: LeadSource
+      default: ''
+      type: string
+    - name: Status
+      src: Status
+      default: ''
+      type: string
+    - name: Industry
+      src: Industry
+      default: ''
+      type: string
+    - name: Rating
+      src: Rating
+      default: ''
+      type: string
+    - name: AnnualRevenue
+      src: AnnualRevenue
+      default: ''
+      type: string
+    - name: NumberOfEmployees
+      src: NumberOfEmployees
+      default: ''
+      type: string
+    - name: OwnerId
+      src: OwnerId
+      default: ''
+      type: string
+    - name: HasOptedOutOfEmail
+      src: HasOptedOutOfEmail
+      default: ''
+      type: boolean
+    - name: IsConverted
+      src: IsConverted
+      default: ''
+      type: boolean
+    - name: ConvertedDate
+      src: ConvertedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: ConvertedAccountId
+      src: ConvertedAccountId
+      default: ''
+      type: string
+    - name: ConvertedContactId
+      src: ConvertedContactId
+      default: ''
+      type: string
+    - name: ConvertedOpportunityId
+      src: ConvertedOpportunityId
+      default: ''
+      type: string
+    - name: IsUnreadByOwner
+      src: IsUnreadByOwner
+      default: ''
+      type: boolean
+    - name: CreatedDate
+      src: CreatedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: CreatedById
+      src: CreatedById
+      default: ''
+      type: string
+    - name: LastModifiedDate
+      src: LastModifiedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastModifiedById
+      src: LastModifiedById
+      default: ''
+      type: string
+    - name: SystemModstamp
+      src: SystemModstamp
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastActivityDate
+      src: LastActivityDate
+      default: ''
+      type: string
+    - name: LastViewedDate
+      src: LastViewedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: LastReferencedDate
+      src: LastReferencedDate
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: Jigsaw
+      src: Jigsaw
+      default: ''
+      type: string
+    - name: JigsawContactId
+      src: JigsawContactId
+      default: ''
+      type: string
+    - name: EmailBouncedReason
+      src: EmailBouncedReason
+      default: ''
+      type: string
+    - name: EmailBouncedDate
+      src: EmailBouncedDate
+      default: ''
+      type: string
+    - name: IndividualId
+      src: IndividualId
+      default: ''
+      type: string
+    - name: InquiryType__c
+      src: InquiryType__c
+      default: ''
+      type: string
+    - name: JobRole__c
+      src: JobRole__c
+      default: ''
+      type: string
+    - name: Purpose__c
+      src: Purpose__c
+      default: ''
+      type: string
+    - name: sfLma__Subscriber_Org_Type__c
+      src: sfLma__Subscriber_Org_Type__c
+      default: ''
+      type: string
+    - name: Department__c
+      src: Department__c
+      default: ''
+      type: string
+    - name: InquiryMemo__c
+      src: InquiryMemo__c
+      default: ''
+      type: string
+    - name: LeadCampaign__c
+      src: LeadCampaign__c
+      default: ''
+      type: string
+    - name: InquiryDate__c
+      src: InquiryDate__c
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: IsConverted__c
+      src: IsConverted__c
+      default: ''
+      type: boolean
+    - name: IsExcluded__c
+      src: IsExcluded__c
+      default: ''
+      type: boolean
+    - name: IsConvertedToOpportunity__c
+      src: IsConvertedToOpportunity__c
+      default: ''
+      type: boolean
+    - name: LostReason__c
+      src: LostReason__c
+      default: ''
+      type: string
+    - name: AICEAS__c
+      src: AICEAS__c
+      default: ''
+      type: string
+    - name: FavorComment__c
+      src: FavorComment__c
+      default: ''
+      type: string
+    - name: DaysOfLastActivity__c
+      src: DaysOfLastActivity__c
+      default: ''
+      type: string
+    - name: NAnalyticsUserId__c
+      src: NAnalyticsUserId__c
+      default: ''
+      type: string
+    - name: NAnalyticsSessionId__c
+      src: NAnalyticsSessionId__c
+      default: ''
+      type: string
+    - name: NAnalyticsPvNum__c
+      src: NAnalyticsPvNum__c
+      default: ''
+      type: string
+    - name: TargetUsage__c
+      src: TargetUsage__c
+      default: ''
+      type: string
+    - name: Closingmonth__c
+      src: Closingmonth__c
+      default: ''
+      type: string
+    - name: DevSumi_Researvation__c
+      src: DevSumi_Researvation__c
+      default: ''
+      type: string
+    - name: CapitalStock__c
+      src: CapitalStock__c
+      default: ''
+      type: string
+    - name: LG__c
+      src: LG__c
+      default: ''
+      type: string
+    - name: CompanySize__c
+      src: CompanySize__c
+      default: ''
+      type: string
+    - name: Field6__c
+      src: Field6__c
+      default: ''
+      type: boolean
+    - name: Field4__c
+      src: Field4__c
+      default: ''
+      type: boolean
+    - name: Field3__c
+      src: Field3__c
+      default: ''
+      type: string
+    - name: apointment_day__c
+      src: apointment_day__c
+      default: ''
+      type: string
+    - name: HandsOnSchedule__c
+      src: HandsOnSchedule__c
+      default: ''
+      type: string
+    - name: TransfarFrom__c
+      src: TransfarFrom__c
+      default: ''
+      type: string
+    - name: TransferTo__c
+      src: TransferTo__c
+      default: ''
+      type: string
+    - name: LatestMemo__c
+      src: LatestMemo__c
+      default: ''
+      type: string
+    - name: DES__c
+      src: DES__c
+      default: ''
+      type: string
+    - name: LostReasonDetail__c
+      src: LostReasonDetail__c
+      default: ''
+      type: string
+    - name: BI__c
+      src: BI__c
+      default: ''
+      type: string
+    - name: ManualMedium__c
+      src: ManualMedium__c
+      default: ''
+      type: string
+    - name: ManualSource__c
+      src: ManualSource__c
+      default: ''
+      type: string
+    - name: ManualCampaign__c
+      src: ManualCampaign__c
+      default: ''
+      type: string
+    - name: Field7__c
+      src: Field7__c
+      default: ''
+      type: string
+    - name: Field8__c
+      src: Field8__c
+      default: ''
+      type: string
+    - name: LP_Blog_FB__c
+      src: LP_Blog_FB__c
+      default: ''
+      type: string
+    - name: TestLeadSource__c
+      src: TestLeadSource__c
+      default: ''
+      type: string
+    - name: LeadCategory__c
+      src: LeadCategory__c
+      default: ''
+      type: string
+    - name: LegacyLeadSource__c
+      src: LegacyLeadSource__c
+      default: ''
+      type: string
+    - name: Field9__c
+      src: Field9__c
+      default: ''
+      type: string
+    - name: Field10__c
+      src: Field10__c
+      default: ''
+      type: string
+    - name: OnlineCampaign__c
+      src: OnlineCampaign__c
+      default: ''
+      type: string
+    - name: OnlineMedium__c
+      src: OnlineMedium__c
+      default: ''
+      type: string
+    - name: OnlineSource__c
+      src: OnlineSource__c
+      default: ''
+      type: string
+    - name: LegacyLeadCampaign__c
+      src: LegacyLeadCampaign__c
+      default: ''
+      type: string
+    - name: InquiryFrom__c
+      src: InquiryFrom__c
+      default: ''
+      type: string
+    - name: IsVisited__c
+      src: IsVisited__c
+      default: ''
+      type: double
+    - name: Industry__c
+      src: Industry__c
+      default: ''
+      type: string
+    - name: Industry_new__c
+      src: Industry_new__c
+      default: ''
+      type: string
+    - name: Industry_big__c
+      src: Industry_big__c
+      default: ''
+      type: string
+    - name: Last_lead__c
+      src: Last_lead__c
+      default: ''
+      type: string
+    - name: application__c
+      src: application__c
+      default: ''
+      type: string
+    - name: Tech_company__c
+      src: Tech_company__c
+      default: ''
+      type: string
+    - name: business_category__c
+      src: business_category__c
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

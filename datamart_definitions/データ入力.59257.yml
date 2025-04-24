@@ -1,0 +1,22 @@
+---
+id: 59257
+name: データ入力
+description: ''
+datamart:
+  type: snowflake
+  snowflake_connection_id: 63
+  query_mode: insert
+  warehouse: COMPUTE_WH
+  query: SELECT * from CS_TEAM.PUBLIC.CUSTOMER_TAKEUCHI
+  destination_database: CS_TEAM
+  destination_schema: PUBLIC
+  destination_table: KIMURA_TEST
+  write_disposition: append
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

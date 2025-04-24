@@ -1,0 +1,96 @@
+---
+id: 326637
+name: スキーマ変更検知検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: postgresql
+    postgresql_connection:
+      id: 81
+      name: csdemo-PostgreSQL
+    schema: public
+    database: postgres
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1
+    default_timezone: UTC
+    column_options:
+    query: SELECT * FROM table_view
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '250327'
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: customer_id
+      src: customer_id
+      default: ''
+      type: long
+    - name: customer_name
+      src: customer_name
+      default: ''
+      type: string
+    - name: email
+      src: email
+      default: ''
+      type: string
+    - name: order_id
+      src: order_id
+      default: ''
+      type: long
+    - name: product_name
+      src: product_name
+      default: ''
+      type: string
+    - name: amount
+      src: amount
+      default: ''
+      type: double
+    - name: order_date
+      src: order_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: phone_number
+      src: phone_number
+      default: ''
+      type: string
+    - name: address
+      src: address
+      default: ''
+      type: string
+  schema_detection:
+    need_cancel_job: true
+    channel_type: slack
+    channel_id: 991
+    mention: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

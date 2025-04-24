@@ -1,0 +1,300 @@
+---
+id: 328467
+name: カラム名の検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: 20250403Career_マスク_sample.csv
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: CRLF
+      charset: Shift_JIS
+      columns:
+      - name: 初回受付日
+        type: timestamp
+        format: "%Y/%m/%d"
+      - name: コード
+        type: long
+      - name: 姓名
+        type: string
+      - name: 担当チーム
+        type: string
+      - name: 担当者名
+        type: string
+      - name: 初回ルート
+        type: string
+      - name: 初回ルート詳細
+        type: string
+      - name: 初回_応募求人ID
+        type: string
+      - name: 初回_面談会名
+        type: string
+      - name: 初回_何を見て
+        type: string
+      - name: 初回_エントリーサイト
+        type: string
+      - name: ETルート
+        type: string
+      - name: ETルート補足
+        type: string
+      - name: 備考
+        type: string
+      - name: 性別男女
+        type: string
+      - name: 年齢
+        type: string
+      - name: 都道府県
+        type: string
+      - name: 現職区分
+        type: string
+      - name: 経験職種1
+        type: string
+      - name: 経験業種1
+        type: string
+      - name: 年収1
+        type: string
+      - name: 最終学歴
+        type: string
+      - name: 経験社数
+        type: long
+      - name: 面談日
+        type: timestamp
+        format: "%Y/%m/%d"
+      - name: 候補者ランク
+        type: string
+      - name: 面談コメント
+        type: string
+      - name: 登録ステータス
+        type: string
+      - name: 呼び込みステータス
+        type: string
+      - name: 自宅メール
+        type: string
+      - name: 携帯メール
+        type: string
+      - name: 面談日(2回目以降)
+        type: string
+      - name: 最新_受付日
+        type: timestamp
+        format: "%Y/%m/%d %H:%M:%S"
+      - name: フラグ
+        type: string
+      - name: 最新ルート
+        type: string
+      - name: 最新_エントリーサイト
+        type: string
+      - name: 最新_面談会名
+        type: string
+      - name: 最新_応募求人ID
+        type: string
+      - name: 弊社を選んだ理由
+        type: string
+      - name: DM送信不可
+        type: long
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '250403'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: 初回受付日
+      src: 初回受付日
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: コード
+      src: コード
+      default: ''
+      type: long
+    - name: 姓名
+      src: 姓名
+      default: ''
+      type: string
+    - name: 担当チーム
+      src: 担当チーム
+      default: ''
+      type: string
+    - name: 担当者名
+      src: 担当者名
+      default: ''
+      type: string
+    - name: 初回ルート
+      src: 初回ルート
+      default: ''
+      type: string
+    - name: 初回ルート詳細
+      src: 初回ルート詳細
+      default: ''
+      type: string
+    - name: 初回_応募求人ID
+      src: 初回_応募求人ID
+      default: ''
+      type: string
+    - name: 初回_面談会名
+      src: 初回_面談会名
+      default: ''
+      type: string
+    - name: 初回_何を見て
+      src: 初回_何を見て
+      default: ''
+      type: string
+    - name: 初回_エントリーサイト
+      src: 初回_エントリーサイト
+      default: ''
+      type: string
+    - name: ETルート
+      src: ETルート
+      default: ''
+      type: string
+    - name: ETルート補足
+      src: ETルート補足
+      default: ''
+      type: string
+    - name: 備考
+      src: 備考
+      default: ''
+      type: string
+    - name: 性別男女
+      src: 性別男女
+      default: ''
+      type: string
+    - name: 年齢
+      src: 年齢
+      default: ''
+      type: string
+    - name: 都道府県
+      src: 都道府県
+      default: ''
+      type: string
+    - name: 現職区分
+      src: 現職区分
+      default: ''
+      type: string
+    - name: 経験職種1
+      src: 経験職種1
+      default: ''
+      type: string
+    - name: 経験業種1
+      src: 経験業種1
+      default: ''
+      type: string
+    - name: 年収1
+      src: 年収1
+      default: ''
+      type: string
+    - name: 最終学歴
+      src: 最終学歴
+      default: ''
+      type: string
+    - name: 経験社数
+      src: 経験社数
+      default: ''
+      type: long
+    - name: 面談日
+      src: 面談日
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: 候補者ランク
+      src: 候補者ランク
+      default: ''
+      type: string
+    - name: 面談コメント
+      src: 面談コメント
+      default: ''
+      type: string
+    - name: 登録ステータス
+      src: 登録ステータス
+      default: ''
+      type: string
+    - name: 呼び込みステータス
+      src: 呼び込みステータス
+      default: ''
+      type: string
+    - name: 自宅メール
+      src: 自宅メール
+      default: ''
+      type: string
+    - name: 携帯メール
+      src: 携帯メール
+      default: ''
+      type: string
+    - name: 面談日(2回目以降)
+      src: 面談日(2回目以降)
+      default: ''
+      type: string
+    - name: 最新_受付日
+      src: 最新_受付日
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d %H:%M:%S"
+    - name: フラグ
+      src: フラグ
+      default: ''
+      type: string
+    - name: 最新ルート
+      src: 最新ルート
+      default: ''
+      type: string
+    - name: 最新_エントリーサイト
+      src: 最新_エントリーサイト
+      default: ''
+      type: string
+    - name: 最新_面談会名
+      src: 最新_面談会名
+      default: ''
+      type: string
+    - name: 最新_応募求人ID
+      src: 最新_応募求人ID
+      default: ''
+      type: string
+    - name: 弊社を選んだ理由
+      src: 弊社を選んだ理由
+      default: ''
+      type: string
+    - name: DM送信不可
+      src: DM送信不可
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

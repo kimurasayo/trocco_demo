@@ -1,0 +1,104 @@
+---
+id: 283373
+name: ファイル数のテスト
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: 20241114/string_
+    path_match_pattern: ''
+    decompression_type: guess
+    skip_header_line: false
+    stop_when_file_not_found: false
+    custom_variables: []
+    incremental_loading_enabled: false
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: 氏名
+        type: string
+      - name: 住所
+        type: string
+      - name: 携帯電話番号
+        type: string
+      - name: 備考
+        type: string
+      - name: 数値
+        type: double
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: 20241114_out/sample
+    file_ext: ".csv"
+    acl: NOT_SET
+    suppress_output_files: true
+    sequence_format: ''
+    multipart_upload_enabled: false
+    custom_variables: []
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
+    encoders:
+  data_settings:
+    columns:
+    - name: 氏名
+      src: 氏名
+      default: ''
+      type: string
+    - name: 住所
+      src: 住所
+      default: ''
+      type: string
+    - name: 携帯電話番号
+      src: 携帯電話番号
+      default: ''
+      type: string
+    - name: 備考
+      src: 備考
+      default: ''
+      type: string
+    - name: 数値
+      src: 数値
+      default: ''
+      type: double
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

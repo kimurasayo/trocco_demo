@@ -1,0 +1,66 @@
+---
+id: 285240
+name: BLOB、XML検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: oracle
+    oracle_connection:
+      id: 30
+      name: csdemo-Oracle-AWSRDS
+    database: ORCL
+    query: |-
+      SELECT
+          id,
+          TO_CHAR(sample1) AS sample1,
+          CAST(sample2 AS VARCHAR2(4000)) AS sample2
+      FROM
+          BLOB_XML_TEST;
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '20241127'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table:
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: ID
+      src: ID
+      default:
+      type: double
+    - name: SAMPLE1
+      src: SAMPLE1
+      default:
+      type: string
+    - name: SAMPLE2
+      src: SAMPLE2
+      default:
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

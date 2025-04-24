@@ -1,0 +1,82 @@
+---
+id: 268042
+name: S3 -> databricks
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: cs-work/1002
+    path_match_pattern: ''
+    decompression_type: guess
+    skip_header_line: false
+    stop_when_file_not_found: false
+    custom_variables: []
+    incremental_loading_enabled: false
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: pref
+        type: string
+      - name: name_jp
+        type: string
+      - name: area
+        type: string
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: databricks
+    databricks_connection:
+      id: 13
+      name: pN検証環境（CS Demo）
+    catalog_name: primenumer_aws_playground
+    schema_name: cs_demo
+    table: 1002_test
+    retry_limit: 12
+    retry_wait: 1000
+    mode: insert
+    max_retry_wait: 1800000
+    default_timezone: Etc/UTC
+    column_options:
+    batch_size: 50
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: pref
+      src: pref
+      default: ''
+      type: string
+    - name: name_jp
+      src: name_jp
+      default: ''
+      type: string
+    - name: area
+      src: area
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

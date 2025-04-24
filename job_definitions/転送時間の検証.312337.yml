@@ -1,0 +1,360 @@
+---
+id: 312337
+name: 転送時間の検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: snowflake
+    snowflake_connection:
+      id: 47
+      name: csdemo-Snowflake
+    database: TEST_BY_KIMURA
+    schema: PUBLIC
+    warehouse: COMPUTE_WH
+    query: select * from TEST_BY_KIMURA.PUBLIC.CUSTOMER_INFO
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    custom_variables: []
+  out:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '233'
+    mode: upsert
+    update_key: c21
+    ignore_nulls: false
+    chunk_size: 100
+    column_options:
+      c0:
+        field_code: c0
+        type: SINGLE_LINE_TEXT
+      c1:
+        field_code: c1
+        type: SINGLE_LINE_TEXT
+      c2:
+        field_code: c2
+        type: SINGLE_LINE_TEXT
+      c3:
+        field_code: c3
+        type: SINGLE_LINE_TEXT
+      c5:
+        field_code: c5
+        type: SINGLE_LINE_TEXT
+      c6:
+        field_code: c6
+        type: SINGLE_LINE_TEXT
+      c7:
+        field_code: c7
+        type: SINGLE_LINE_TEXT
+      c8:
+        field_code: c8
+        type: SINGLE_LINE_TEXT
+      c9:
+        field_code: c9
+        type: SINGLE_LINE_TEXT
+      c10:
+        field_code: c10
+        type: SINGLE_LINE_TEXT
+      c11:
+        field_code: c11
+        type: SINGLE_LINE_TEXT
+      c12:
+        field_code: c12
+        type: SINGLE_LINE_TEXT
+      c13:
+        field_code: c13
+        type: SINGLE_LINE_TEXT
+      c14:
+        field_code: c14
+        type: SINGLE_LINE_TEXT
+      c15:
+        field_code: c15
+        type: SINGLE_LINE_TEXT
+      c16:
+        field_code: c16
+        type: SINGLE_LINE_TEXT
+      c17:
+        field_code: c17
+        type: SINGLE_LINE_TEXT
+      c18:
+        field_code: c18
+        type: SINGLE_LINE_TEXT
+      c19:
+        field_code: c19
+        type: SINGLE_LINE_TEXT
+      c21:
+        field_code: c21
+        type: SINGLE_LINE_TEXT
+      c23:
+        field_code: c23
+        type: SINGLE_LINE_TEXT
+      c24:
+        field_code: c24
+        type: SINGLE_LINE_TEXT
+      c25:
+        field_code: c25
+        type: SINGLE_LINE_TEXT
+      c26:
+        field_code: c26
+        type: SINGLE_LINE_TEXT
+      c27:
+        field_code: c27
+        type: SINGLE_LINE_TEXT
+      c28:
+        field_code: c28
+        type: SINGLE_LINE_TEXT
+      c29:
+        field_code: c29
+        type: SINGLE_LINE_TEXT
+      c30:
+        field_code: c30
+        type: SINGLE_LINE_TEXT
+      c31:
+        field_code: c31
+        type: SINGLE_LINE_TEXT
+      c32:
+        field_code: c32
+        type: SINGLE_LINE_TEXT
+      c35:
+        field_code: c35
+        type: SINGLE_LINE_TEXT
+      c37:
+        field_code: c37
+        type: SINGLE_LINE_TEXT
+      c39:
+        field_code: c39
+        type: DATE
+        timezone: UTC
+      c4:
+        field_code: c4
+        type: DATE
+        timezone: UTC
+      c20:
+        field_code: c20
+        type: DATE
+        timezone: UTC
+      c22:
+        field_code: c22
+        type: DATE
+        timezone: UTC
+      c33:
+        field_code: c33
+        type: DATE
+        timezone: UTC
+      c34:
+        field_code: c34
+        type: DATE
+        timezone: UTC
+      c38:
+        field_code: c38
+        type: DATE
+        timezone: UTC
+      c40:
+        field_code: c40
+        type: SINGLE_LINE_TEXT
+      c41:
+        field_code: c41
+        type: DATE
+        timezone: UTC
+      c50:
+        field_code: c50
+        type: SINGLE_LINE_TEXT
+      c51:
+        field_code: c51
+        type: DATE
+        timezone: UTC
+      c52:
+        field_code: c52
+        type: SINGLE_LINE_TEXT
+      c53:
+        field_code: c53
+        type: SINGLE_LINE_TEXT
+  data_settings:
+    columns:
+    - name: c0
+      src: 顧客
+      default: ''
+      type: string
+    - name: c1
+      src: 初アクセス媒体
+      default: ''
+      type: string
+    - name: c2
+      src: 旧準顧客ID
+      default: ''
+      type: string
+    - name: c3
+      src: 誕生日フラグ
+      default: ''
+      type: string
+    - name: c4
+      src: 失客日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c5
+      src: イタズラフラグ
+      default: ''
+      type: string
+    - name: c6
+      src: 削除フラグ
+      default: ''
+      type: string
+    - name: c7
+      src: SV初認知媒体
+      default: ''
+      type: string
+    - name: c8
+      src: 会員区分
+      default: ''
+      type: string
+    - name: c9
+      src: 請求受信者
+      default: ''
+      type: string
+    - name: c10
+      src: 販売先顧客
+      default: ''
+      type: string
+    - name: c11
+      src: 紹介元代理店
+      default: ''
+      type: string
+    - name: c12
+      src: 顧客ステータス
+      default: ''
+      type: string
+    - name: c13
+      src: 参照元
+      default: ''
+      type: string
+    - name: c14
+      src: 他社経験
+      default: ''
+      type: string
+    - name: c15
+      src: 顧客ランク
+      default: ''
+      type: string
+    - name: c16
+      src: 他社名
+      default: ''
+      type: string
+    - name: c17
+      src: 性別
+      default: ''
+      type: string
+    - name: c18
+      src: 店舗名
+      default: ''
+      type: string
+    - name: c19
+      src: 一般DM
+      default: ''
+      type: string
+    - name: c20
+      src: 資料請求日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c21
+      src: 顧客ID
+      default: ''
+      type: string
+    - name: c22
+      src: 作成日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c23
+      src: 紹介元顧客
+      default: ''
+      type: string
+    - name: c24
+      src: 連絡可否
+      default: ''
+      type: string
+    - name: c25
+      src: キャンペーン
+      default: ''
+      type: string
+    - name: c26
+      src: 都道府県
+      default: ''
+      type: string
+    - name: c27
+      src: 一般メール
+      default: ''
+      type: string
+    - name: c28
+      src: 資料請求有無
+      default: ''
+      type: string
+    - name: c29
+      src: 顧客番号
+      default: ''
+      type: string
+    - name: c30
+      src: 郵便連絡可否
+      default: ''
+      type: string
+    - name: c31
+      src: 電話連絡可否
+      default: ''
+      type: string
+    - name: c32
+      src: コンテンツ
+      default: ''
+      type: string
+    - name: c33
+      src: 顧客登録日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c34
+      src: 更新日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c35
+      src: 失客区分
+      default: ''
+      type: string
+    - name: c36
+      src: 特記事項
+      default: ''
+      type: string
+    - name: c37
+      src: 失客理由
+      default: ''
+      type: string
+    - name: c38
+      src: 誕生日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c39
+      src: 準顧客登録日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: c40
+      src: LINEID
+      default: ''
+      type: string
+    - name: c41
+      src: LINEID連携日
+      default: ''
+      type: timestamp
+      format: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

@@ -1,0 +1,172 @@
+---
+id: 326160
+name: shopifyの商品情報を転送
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: shopify
+    shopify_connection:
+      id: 15
+      name: csdemo-Shopify
+    target: product
+    created_at_min: ''
+    created_at_max: ''
+    updated_at_min: ''
+    updated_at_max: ''
+    published_at_min: ''
+    published_at_max: ''
+    product_status: active
+    published_status: any
+    custom_variables: []
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: CRLF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: id
+        type: long
+      - name: title
+        type: string
+      - name: body_html
+        type: string
+      - name: vendor
+        type: string
+      - name: product_type
+        type: string
+      - name: created_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%:z"
+      - name: handle
+        type: string
+      - name: updated_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%:z"
+      - name: published_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%:z"
+      - name: template_suffix
+        type: string
+      - name: published_scope
+        type: string
+      - name: tags
+        type: string
+      - name: status
+        type: string
+      - name: admin_graphql_api_id
+        type: string
+      - name: variants
+        type: json
+      - name: options
+        type: json
+      - name: images
+        type: json
+      - name: image
+        type: json
+  out:
+    type: google_drive
+    google_drive_connection:
+      id: 325
+      name: csdemo-GoogleDrive-kimura
+    main_folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
+    file_name: '0324'
+    custom_variables: []
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: title
+      src: title
+      default: ''
+      type: string
+    - name: body_html
+      src: body_html
+      default: ''
+      type: string
+    - name: vendor
+      src: vendor
+      default: ''
+      type: string
+    - name: product_type
+      src: product_type
+      default: ''
+      type: string
+    - name: created_at
+      src: created_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%:z"
+    - name: handle
+      src: handle
+      default: ''
+      type: string
+    - name: updated_at
+      src: updated_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%:z"
+    - name: published_at
+      src: published_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%:z"
+    - name: template_suffix
+      src: template_suffix
+      default: ''
+      type: string
+    - name: published_scope
+      src: published_scope
+      default: ''
+      type: string
+    - name: tags
+      src: tags
+      default: ''
+      type: string
+    - name: status
+      src: status
+      default: ''
+      type: string
+    - name: admin_graphql_api_id
+      src: admin_graphql_api_id
+      default: ''
+      type: string
+    - name: variants
+      src: variants
+      default: ''
+      type: json
+    - name: options
+      src: options
+      default: ''
+      type: json
+    - name: images
+      src: images
+      default: ''
+      type: json
+    - name: image
+      src: image
+      default: ''
+      type: json
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

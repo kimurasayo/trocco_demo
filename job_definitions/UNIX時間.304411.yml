@@ -1,0 +1,101 @@
+---
+id: 304411
+name: UNIX時間
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: parquet_sample.json
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: LF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: id
+        type: string
+      - name: message_id
+        type: string
+      - name: participant_id
+        type: string
+      - name: report_to_id
+        type: string
+      - name: bounced_at
+        type: double
+      - name: created_at
+        type: long
+      - name: updated_at
+        type: long
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: 0130_json
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: string
+    - name: message_id
+      src: message_id
+      default: ''
+      type: string
+    - name: participant_id
+      src: participant_id
+      default: ''
+      type: string
+    - name: report_to_id
+      src: report_to_id
+      default: ''
+      type: string
+    - name: bounced_at
+      src: bounced_at
+      default: ''
+      type: double
+    - name: created_at
+      src: created_at
+      default: ''
+      type: long
+    - name: updated_at
+      src: updated_at
+      default: ''
+      type: long
+    unixtime_conversion:
+      columns:
+      - column_name: created_at
+        kind: unixtime_to_timestamp
+        unixtime_unit: millisecond
+      - column_name: updated_at
+        kind: unixtime_to_timestamp
+        unixtime_unit: millisecond
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

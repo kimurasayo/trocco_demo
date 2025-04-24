@@ -1,0 +1,45 @@
+---
+id: 330222
+name: 新規顧客リストをスプレッドシートに転送する
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: snowflake
+    snowflake_connection:
+      id: 47
+      name: csdemo-Snowflake
+    database: TEST_BY_KIMURA
+    schema: public
+    warehouse: COMPUTE_WH
+    query: select SUM("応募数") from TEST_BY_KIMURA.PUBLIC.SAMPLE20241025
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    custom_variables: []
+  out:
+    type: google_spreadsheets_v4
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_id: 1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI
+    worksheet_title: out
+    timezone: Asia/Tokyo
+    value_input_option: USER_ENTERED
+    mode: replace
+    sorts: []
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: SUM("応募数")
+      src: SUM("応募数")
+      default: ''
+      type: double
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

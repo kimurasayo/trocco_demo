@@ -1,0 +1,117 @@
+---
+id: 285297
+name: カラム定義の確認
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_drive
+    google_drive_connection:
+      id: 325
+      name: csdemo-GoogleDrive-kimura
+    folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
+    file_match_pattern: Trocco社
+    decompression_type:
+    skip_header_line: false
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: CRLF
+      charset: UTF-8
+      columns:
+      - name: record_date
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: sku
+        type: string
+      - name: branch_name
+        type: string
+      - name: branch_code
+        type: long
+      - name: department_code
+        type: long
+      - name: sales_quantity
+        type: long
+      - name: company_code
+        type: long
+      - name: inventory_code
+        type: long
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '1128'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: record_date
+      src: record_date
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: branch_name
+      src: branch_name
+      default: ''
+      type: string
+    - name: sku
+      src: sku
+      default: ''
+      type: string
+    - name: branch_code
+      src: branch_code
+      default: ''
+      type: long
+    - name: department_code
+      src: department_code
+      default: ''
+      type: long
+    - name: sales_quantity
+      src: sales_quantity
+      default: ''
+      type: long
+    - name: company_code
+      src: company_code
+      default: ''
+      type: long
+    - name: inventory_code
+      src: inventory_code
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

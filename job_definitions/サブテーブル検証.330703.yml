@@ -1,0 +1,94 @@
+---
+id: 330703
+name: サブテーブル検証
+description: makuake様用の検証で使用
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=0#gid=0
+    worksheet_title: subtable
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: ID
+      type: long
+    - name: 対応ステータス
+      type: string
+    - name: 相談日付
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: 対応完了日
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: 日付
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: コメント
+      type: string
+    - name: 入力者
+      type: string
+    custom_variables: []
+  out:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '239'
+    mode: upsert
+    update_key: ID
+    ignore_nulls: false
+    reduce_key: ID
+    chunk_size: 100
+  data_settings:
+    columns:
+    - name: ID
+      src: ID
+      default: ''
+      type: long
+    - name: 対応ステータス
+      src: 対応ステータス
+      default: ''
+      type: string
+    - name: 相談日付
+      src: 相談日付
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 対応完了日
+      src: 対応完了日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 対応状況.日付
+      src: 日付
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 対応状況.コメント
+      src: コメント
+      default: ''
+      type: string
+    - name: 対応状況.入力者
+      src: 入力者
+      default: ''
+      type: string
+    row_filters:
+      condition: and
+      conditions:
+      - column: 相談日付
+        operator: ">"
+        argument: '2025-04-15'
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

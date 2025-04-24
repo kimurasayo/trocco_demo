@@ -1,0 +1,159 @@
+---
+id: 323807
+name: 検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: '20250313'
+    path_match_pattern: ''
+    decompression_type: guess
+    skip_header_line: false
+    stop_when_file_not_found: false
+    custom_variables: []
+    incremental_loading_enabled: false
+    parser:
+      type: csv
+      delimiter: "\t"
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: H2
+        type: string
+      - name: K001
+        type: string
+      - name: K002
+        type: timestamp
+        format: "%Y/%m/%d"
+      - name: K003
+        type: long
+      - name: D001
+        type: long
+      - name: D002
+        type: string
+      - name: D003
+        type: string
+      - name: D004
+        type: string
+      - name: D005
+        type: string
+      - name: D006
+        type: string
+      - name: D007
+        type: string
+      - name: D008
+        type: string
+      - name: D009
+        type: string
+      - name: D010
+        type: timestamp
+        format: "%Y/%m/%d"
+      - name: D011
+        type: timestamp
+        format: "%Y/%m/%d %H:%M:%S"
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '250313'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: H2
+      src: H2
+      default: ''
+      type: string
+    - name: K002
+      src: K002
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: K003
+      src: K003
+      default: ''
+      type: long
+    - name: D001
+      src: D001
+      default: ''
+      type: long
+    - name: D003
+      src: D003
+      default: ''
+      type: string
+    - name: D004
+      src: D004
+      default: ''
+      type: string
+    - name: D005
+      src: D005
+      default: ''
+      type: string
+    - name: D006
+      src: D006
+      default: ''
+      type: string
+    - name: D007
+      src: D007
+      default: ''
+      type: string
+    - name: D008
+      src: D008
+      default: ''
+      type: string
+    - name: D009
+      src: D009
+      default: ''
+      type: string
+    - name: D010
+      src: D010
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d"
+    - name: D011
+      src: D011
+      default: ''
+      type: timestamp
+      format: "%Y/%m/%d %H:%M:%S"
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

@@ -1,0 +1,20 @@
+---
+id: 54065
+name: trancate検証
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: query
+  query: |-
+    TRUNCATE TABLE
+      kimura_test.1129;
+  location: asia-northeast1
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

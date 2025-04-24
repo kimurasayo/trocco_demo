@@ -1,0 +1,67 @@
+---
+id: 283701
+name: ログを確認する
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: 転送データ_20240612.csv
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: CONVERSION_TIME
+        type: timestamp
+      - name: EVENT_ID
+        type: long
+      - name: CLIENT_USER_AGENT
+        type: string
+      - name: USER_EMAIL
+        type: string
+      - name: USER_PHONE_RULE1
+        type: string
+      - name: VALUE
+        type: long
+      - name: CURRENCY
+        type: string
+      - name: ORDER_ID
+        type: string
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: google_ads_offline_conversion
+    google_ads_connection:
+      id: 233
+      name: QA検証用_転送先GoogleAdsで利用
+    customer_id: '6797712831'
+    conversion_action_id: '6807571130'
+    conversion_type: offline_conversion
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: conversion_time
+      src: CONVERSION_TIME
+      default: ''
+      type: timestamp
+      format: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

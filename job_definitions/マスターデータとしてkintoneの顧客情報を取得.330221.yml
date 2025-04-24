@@ -1,0 +1,59 @@
+---
+id: 330221
+name: マスターデータとしてkintoneの顧客情報を取得
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '166'
+    fields:
+    - name: ID
+      type: string
+    - name: date
+      type: timestamp
+    guest_space_id: ''
+    query: ''
+    expand_subtable: true
+    custom_variables: []
+  out:
+    type: snowflake
+    snowflake_connection:
+      id: 1568
+      name: Snowflake - クックブック
+    warehouse: COMPUTE_WH
+    database: COOKBOOK
+    schema: PUBLIC
+    table: COOKBOOK_TIMESTAMP
+    retry_limit: 12
+    retry_wait: 1000
+    max_retry_wait: 1800000
+    mode: replace
+    default_timezone: UTC
+    column_options:
+    empty_field_as_null: true
+    batch_size: 50
+    delete_stage_on_error: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: ID
+      src: ID
+      default: ''
+      type: string
+    - name: date
+      src: date
+      default: ''
+      type: timestamp
+      format: ''
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

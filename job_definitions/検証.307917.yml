@@ -1,0 +1,90 @@
+---
+id: 307917
+name: 検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1aZj4cny5wOXf8Lk6Ralo0hwumalcf034-mLrqUsJvVw/edit?gid=0#gid=0
+    worksheet_title: 名簿
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: 社員番号
+      type: long
+    - name: 名前
+      type: string
+    - name: 入社年月日
+      type: timestamp
+      format: "%Y年%m月%d日"
+    - name: 役職
+      type: string
+    custom_variables:
+    - type: timestamp
+      name: "$date$"
+      quantity: 0
+      unit: hour
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%s"
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '0210_2'
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: 社員番号
+      default: ''
+      type: long
+    - name: name
+      src: 名前
+      default: ''
+      type: string
+    - name: date
+      src: 入社年月日
+      default: ''
+      type: timestamp
+      format: ''
+    - name: role
+      src: 役職
+      default: ''
+      type: string
+    unixtime_conversion:
+      columns:
+      - column_name: date
+        kind: timestamp_to_unixtime
+        unixtime_unit: second
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

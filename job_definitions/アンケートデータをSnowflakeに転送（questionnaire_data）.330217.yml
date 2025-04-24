@@ -1,0 +1,102 @@
+---
+id: 330217
+name: アンケートデータをSnowflakeに転送（questionnaire_data）
+description: Google Spreadsheetsにある顧客データをSnowflakeに転送する
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 2074
+      name: Google Spreadsheets - クックブック
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1vtY3QxuXpdOaGnyq9lUhjng_Ukxuwl3OnUbhPwQPdwQ/edit?gid=633976646#gid=633976646
+    worksheet_title: Sheet1
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: 氏名
+      type: string
+    - name: 氏名（ひらがな）
+      type: string
+    - name: 年齢
+      type: long
+    - name: 生年月日
+      type: string
+    - name: 性別
+      type: string
+    - name: メールアドレス
+      type: string
+    - name: 携帯電話番号
+      type: string
+    - name: 郵便番号
+      type: string
+    - name: 住所
+      type: string
+    custom_variables: []
+  out:
+    type: snowflake
+    snowflake_connection:
+      id: 1568
+      name: Snowflake - クックブック
+    warehouse: COMPUTE_WH
+    database: COOKBOOK
+    schema: PUBLIC
+    table: CUSTOMER_DATA
+    retry_limit: 12
+    retry_wait: 1000
+    max_retry_wait: 1800000
+    mode: replace
+    default_timezone: UTC
+    column_options:
+    empty_field_as_null: true
+    batch_size: 50
+    delete_stage_on_error: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: NAME
+      src: 氏名
+      default: ''
+      type: string
+    - name: NAME_KANA
+      src: 氏名（ひらがな）
+      default: ''
+      type: string
+    - name: AGE
+      src: 年齢
+      default: ''
+      type: long
+    - name: BIRTHDAY
+      src: 生年月日
+      default: ''
+      type: string
+    - name: GENDER
+      src: 性別
+      default: ''
+      type: string
+    - name: EMAIL
+      src: メールアドレス
+      default: ''
+      type: string
+    - name: PHONE
+      src: 携帯電話番号
+      default: ''
+      type: string
+    - name: ZIP_CODE
+      src: 郵便番号
+      default: ''
+      type: string
+    - name: ADDRESS
+      src: 住所
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

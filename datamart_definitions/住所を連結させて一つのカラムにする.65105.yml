@@ -1,0 +1,36 @@
+---
+id: 65105
+name: 住所を連結させて一つのカラムにする
+description: |-
+  ZIP_CODEとADDRESSカラムを全て連結させて一つのカラムにする
+  また取得したデータの中から女性だけを絞り込む
+datamart:
+  type: snowflake
+  snowflake_connection_id: 1568
+  query_mode: insert
+  warehouse: COMPUTE_WH
+  query: |-
+    SELECT
+      NAME,
+      AGE,
+      BIRTHDAY,
+      GENDER,
+      EMAIL,
+      PHONE,
+      ZIP_CODE || ' ' || ADDRESS AS FULL_ADDRESS
+    FROM
+      COOKBOOK.PUBLIC.CUSTOMER_DATA
+    WHERE
+      GENDER = '女'
+  destination_database: COOKBOOK
+  destination_schema: PUBLIC
+  destination_table: CUSTOMER_DATA_DM
+  write_disposition: replace
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

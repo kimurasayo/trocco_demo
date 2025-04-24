@@ -1,0 +1,76 @@
+---
+id: 276361
+name: snowflake -> google drive
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: snowflake
+    snowflake_connection:
+      id: 47
+      name: csdemo-Snowflake
+    database: TEST_BY_KIMURA
+    schema: public
+    warehouse: COMPUTE_WH
+    query: select * from SAMPLE_DATA
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    custom_variables: []
+  out:
+    type: google_drive
+    google_drive_connection:
+      id: 325
+      name: csdemo-GoogleDrive-kimura
+    main_folder_id: "$folder_id$"
+    file_name: "$company_id$"
+    custom_variables:
+    - type: string
+      name: "$folder_id$"
+      value: 1LnwzPiWFPkFfG7Km_d593XQoh7aWwDIb
+    - type: string
+      name: "$company_id$"
+      value: '2'
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
+  data_settings:
+    columns:
+    - name: COMPANY_ID
+      src: COMPANY_ID
+      default: ''
+      type: long
+    - name: FOLDER_ID
+      src: FOLDER_ID
+      default: ''
+      type: string
+    - name: ORDER_ID
+      src: ORDER_ID
+      default: ''
+      type: long
+    - name: INFO
+      src: INFO
+      default: ''
+      type: string
+    row_filters:
+      condition: and
+      conditions:
+      - column: FOLDER_ID
+        operator: "=="
+        argument: "$folder_id$"
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

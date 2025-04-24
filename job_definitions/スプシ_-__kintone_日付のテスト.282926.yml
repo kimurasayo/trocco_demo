@@ -1,0 +1,83 @@
+---
+id: 282926
+name: スプシ -> kintone 日付のテスト
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=0#gid=0
+    worksheet_title: 名簿
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: id
+      type: long
+    - name: name
+      type: string
+    - name: age
+      type: long
+    - name: 日付
+      type: string
+    - name: 数値
+      type: string
+    custom_variables: []
+  out:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '220'
+    mode: insert
+    ignore_nulls: false
+    chunk_size: 100
+    column_options:
+      日付:
+        field_code: 日付
+        type: DATE
+        timezone: UTC
+  data_settings:
+    columns:
+    - name: 数値
+      src: id
+      default: ''
+      type: long
+    - name: 文字列__1行_
+      src: name
+      default: ''
+      type: string
+    - name: 数値_0
+      src: age
+      default: ''
+      type: long
+    - name: 日付
+      src: 日付
+      default: ''
+      type: string
+    - name: 数値_1
+      src: 数値
+      default: ''
+      type: string
+    string_replacement_columns:
+      target_columns:
+        数値_1:
+        - type: regexp_replace
+          pattern: ","
+          to: ''
+        日付:
+        - type: regexp_replace
+          pattern: "/"
+          to: "-"
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

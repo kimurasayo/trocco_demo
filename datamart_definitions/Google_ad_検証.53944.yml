@@ -1,0 +1,28 @@
+---
+id: 53944
+name: Google ad 検証
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    select A.campaign_name,
+        A.segments_date,
+        A.segments_device,
+        B.metrics_conversions
+     from `systemn-playground.kimura_test.google_ads_ad_group_ad_2` A LEFT join `systemn-playground.kimura_test.google_ads_ad_group_ad` B
+    on A.campaign_name = B.campaign_name
+    AND A.segments_date = B.segments_date
+    AND A.segments_device = B.segments_device
+  destination_dataset: kimura_test
+  destination_table: google_ads_ad_group_ad_3
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

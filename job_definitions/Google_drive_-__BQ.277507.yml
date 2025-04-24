@@ -1,0 +1,71 @@
+---
+id: 277507
+name: Google drive -> BQ
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_drive
+    google_drive_connection:
+      id: 325
+      name: csdemo-GoogleDrive-kimura
+    folder_id: 1uQPjcxMflHRoULi7pCLGqK0nCq8xawL6
+    file_match_pattern: ''
+    decompression_type:
+    skip_header_line: false
+    custom_variables: []
+    parser:
+      type: poi_excel
+      sheets:
+      - Sheet1
+      skip_header_lines: 1
+      default_timezone: Asia/Tokyo
+      columns:
+      - name: id
+        type: string
+        formula_handling: cashed_value
+      - name: name
+        type: string
+        formula_handling: cashed_value
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: file_1018
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: string
+    - name: name
+      src: name
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

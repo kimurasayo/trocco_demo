@@ -1,0 +1,147 @@
+---
+id: 265579
+name: マスターデータとしてkintoneの顧客情報を取得（kintone_customer_info）
+description: kintoneにある顧客データを分析するためにBigQueryに転送する
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '166'
+    fields:
+    - name: "$id"
+      type: long
+    - name: "$revision"
+      type: long
+    - name: ID
+      type: string
+    - name: address1
+      type: string
+    - name: date
+      type: timestamp
+    - name: postal_code
+      type: string
+    - name: prefecture
+      type: string
+    - name: カテゴリー
+      type: string
+    - name: ステータス
+      type: string
+    - name: レコード番号
+      type: long
+    - name: 作成日時
+      type: timestamp
+    - name: 作成者
+      type: string
+    - name: 作業者
+      type: string
+    - name: 更新日時
+      type: timestamp
+    - name: 更新者
+      type: string
+    guest_space_id: ''
+    query: ''
+    expand_subtable: true
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: kintone_customer_info_test
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id_1
+      src: "$id"
+      default: ''
+      type: long
+    - name: revision_1
+      src: "$revision"
+      default: ''
+      type: long
+    - name: ID
+      src: ID
+      default: ''
+      type: string
+    - name: address1
+      src: address1
+      default: ''
+      type: string
+    - name: date
+      src: date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: postal_code
+      src: postal_code
+      default: ''
+      type: string
+    - name: prefecture
+      src: prefecture
+      default: ''
+      type: string
+    - name: カテゴリー
+      src: カテゴリー
+      default: ''
+      type: string
+    - name: ステータス
+      src: ステータス
+      default: ''
+      type: string
+    - name: レコード番号
+      src: レコード番号
+      default: ''
+      type: long
+    - name: 作成日時
+      src: 作成日時
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 作成者
+      src: 作成者
+      default: ''
+      type: string
+    - name: 作業者
+      src: 作業者
+      default: ''
+      type: string
+    - name: 更新日時
+      src: 更新日時
+      default: ''
+      type: timestamp
+      format: ''
+    - name: 更新者
+      src: 更新者
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels:
+- name: テクサポ
+  id: 3068
+- name: クックブック検証用
+  id: 3759
+job_schedules: []
+notifications: []

@@ -1,0 +1,34 @@
+---
+id: 58316
+name: 処理時間の計算
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: |-
+    WITH tmp AS (
+        SELECT
+            SUM(timestamp_diff(finished_at, started_at, SECOND)) AS diff_second
+        FROM
+            kimura_test.251129
+    )
+
+    SELECT
+        CONCAT(
+            EXTRACT(HOUR FROM MAKE_INTERVAL(SECOND => diff_second)), '時間',
+            EXTRACT(MINUTE FROM MAKE_INTERVAL(SECOND => diff_second)), '分',
+            EXTRACT(SECOND FROM MAKE_INTERVAL(SECOND => diff_second)), '秒'
+        ) AS format_seconds
+    FROM tmp
+  destination_dataset: kimura_test
+  destination_table: 251129_sum
+  write_disposition: truncate
+  custom_variables: []
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

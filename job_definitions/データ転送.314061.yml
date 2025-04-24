@@ -1,0 +1,339 @@
+---
+id: 314061
+name: データ転送
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: customer_info.csv
+    parser:
+      type: csv
+      delimiter: "|"
+      skip_header_lines: 0
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: c0
+        type: string
+      - name: c1
+        type: string
+      - name: c2
+        type: string
+      - name: c3
+        type: string
+      - name: c4
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c5
+        type: string
+      - name: c6
+        type: string
+      - name: c7
+        type: string
+      - name: c8
+        type: string
+      - name: c9
+        type: string
+      - name: c10
+        type: string
+      - name: c11
+        type: string
+      - name: c12
+        type: string
+      - name: c13
+        type: string
+      - name: c14
+        type: string
+      - name: c15
+        type: string
+      - name: c16
+        type: string
+      - name: c17
+        type: string
+      - name: c18
+        type: string
+      - name: c19
+        type: string
+      - name: c20
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c21
+        type: long
+      - name: c22
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c23
+        type: string
+      - name: c24
+        type: string
+      - name: c25
+        type: string
+      - name: c26
+        type: string
+      - name: c27
+        type: string
+      - name: c28
+        type: string
+      - name: c29
+        type: string
+      - name: c30
+        type: string
+      - name: c31
+        type: string
+      - name: c32
+        type: string
+      - name: c33
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c34
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c35
+        type: string
+      - name: c36
+        type: string
+      - name: c37
+        type: string
+      - name: c38
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c39
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: c40
+        type: string
+      - name: c41
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S.%N"
+      quote: "'"
+      escape: ''
+      null_string: 'null'
+    decoders: []
+  out:
+    type: snowflake
+    snowflake_connection:
+      id: 47
+      name: csdemo-Snowflake
+    warehouse: COMPUTE_WH
+    database: TEST_BY_KIMURA
+    schema: PUBLIC
+    table: CUSTOMER_INFO
+    retry_limit: 12
+    retry_wait: 1000
+    max_retry_wait: 1800000
+    mode: insert
+    default_timezone: UTC
+    column_options:
+      c4:
+        type: DATE
+      c20:
+        type: DATE
+      c22:
+        type: DATE
+      c33:
+        type: DATE
+      c34:
+        type: DATE
+      c38:
+        type: DATE
+      c39:
+        type: DATE
+    empty_field_as_null: true
+    batch_size: 50
+    delete_stage_on_error: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: c0
+      src: c0
+      default: ''
+      type: string
+    - name: c1
+      src: c1
+      default: ''
+      type: string
+    - name: c2
+      src: c2
+      default: ''
+      type: string
+    - name: c3
+      src: c3
+      default: ''
+      type: string
+    - name: c4
+      src: c4
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c5
+      src: c5
+      default: ''
+      type: string
+    - name: c6
+      src: c6
+      default: ''
+      type: string
+    - name: c7
+      src: c7
+      default: ''
+      type: string
+    - name: c8
+      src: c8
+      default: ''
+      type: string
+    - name: c9
+      src: c9
+      default: ''
+      type: string
+    - name: c10
+      src: c10
+      default: ''
+      type: string
+    - name: c11
+      src: c11
+      default: ''
+      type: string
+    - name: c12
+      src: c12
+      default: ''
+      type: string
+    - name: c13
+      src: c13
+      default: ''
+      type: string
+    - name: c14
+      src: c14
+      default: ''
+      type: string
+    - name: c15
+      src: c15
+      default: ''
+      type: string
+    - name: c16
+      src: c16
+      default: ''
+      type: string
+    - name: c17
+      src: c17
+      default: ''
+      type: string
+    - name: c18
+      src: c18
+      default: ''
+      type: string
+    - name: c19
+      src: c19
+      default: ''
+      type: string
+    - name: c20
+      src: c20
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c21
+      src: c21
+      default: ''
+      type: long
+    - name: c22
+      src: c22
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c23
+      src: c23
+      default: ''
+      type: string
+    - name: c24
+      src: c24
+      default: ''
+      type: string
+    - name: c25
+      src: c25
+      default: ''
+      type: string
+    - name: c26
+      src: c26
+      default: ''
+      type: string
+    - name: c27
+      src: c27
+      default: ''
+      type: string
+    - name: c28
+      src: c28
+      default: ''
+      type: string
+    - name: c29
+      src: c29
+      default: ''
+      type: string
+    - name: c30
+      src: c30
+      default: ''
+      type: string
+    - name: c31
+      src: c31
+      default: ''
+      type: string
+    - name: c32
+      src: c32
+      default: ''
+      type: string
+    - name: c33
+      src: c33
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c34
+      src: c34
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c35
+      src: c35
+      default: ''
+      type: string
+    - name: c36
+      src: c36
+      default: ''
+      type: string
+    - name: c37
+      src: c37
+      default: ''
+      type: string
+    - name: c38
+      src: c38
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c39
+      src: c39
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: c40
+      src: c40
+      default: ''
+      type: string
+    - name: c41
+      src: c41
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S.%N"
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

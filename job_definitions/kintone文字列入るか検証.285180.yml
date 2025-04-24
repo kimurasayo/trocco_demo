@@ -1,0 +1,54 @@
+---
+id: 285180
+name: kintone文字列入るか検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: google_spreadsheets
+    google_spreadsheets_connection:
+      id: 1123
+      name: kimura-GoogleSpreadsheets
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=859238124#gid=859238124
+    worksheet_title: シート16
+    start_row: 2
+    start_column: A
+    default_timezone: Asia/Tokyo
+    null_string: ''
+    columns:
+    - name: 顧客ID
+      type: string
+    - name: othercorp_maker
+      type: string
+    custom_variables: []
+  out:
+    type: kintone
+    kintone_connection:
+      id: 54
+      name: csdemo-kintone
+    app_id: '222'
+    mode: insert
+    ignore_nulls: false
+    chunk_size: 100
+    column_options:
+      othercorp_maker:
+        field_code: othercorp_maker
+        type: CHECK_BOX
+  data_settings:
+    columns:
+    - name: 顧客ID
+      src: 顧客ID
+      default: ''
+      type: string
+    - name: othercorp_maker
+      src: othercorp_maker
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
