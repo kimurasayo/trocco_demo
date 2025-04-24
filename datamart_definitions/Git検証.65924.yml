@@ -15,6 +15,14 @@ user:
   id: 6335
   email: sayo.kimura+demo@primenumber.co.jp
 is_runnable_concurrently: false
-labels: []
+labels:
+- name: テクサポ
+  id: 3068
 job_schedules: []
-notifications: []
+notifications:
+- type: complete
+  notify_when: finished
+  slack_destination:
+    id: 991
+    channel: kimura-test
+  message: ''
