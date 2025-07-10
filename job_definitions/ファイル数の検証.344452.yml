@@ -1,0 +1,677 @@
+---
+id: 344452
+name: ファイル数の検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    gcs_uri: gs://trocco_cs/kimura/*
+    gcs_uri_format: custom_path
+    query: SELECT * FROM fukazawa_test.large_row
+    location: asia-northeast1
+    temp_dataset: kimura_test
+    cleanup_gcs_files: false
+    use_legacy_sql: false
+    cache: true
+    file_format: CSV
+    bigquery_job_wait_second: 600
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: c0
+        type: string
+      - name: c1
+        type: string
+      - name: c2
+        type: string
+      - name: c3
+        type: string
+      - name: c4
+        type: string
+      - name: c5
+        type: string
+      - name: c6
+        type: string
+      - name: c7
+        type: string
+      - name: c8
+        type: string
+      - name: c9
+        type: string
+      - name: c10
+        type: string
+      - name: c11
+        type: string
+      - name: c12
+        type: string
+      - name: c13
+        type: string
+      - name: c14
+        type: string
+      - name: c15
+        type: string
+      - name: c16
+        type: string
+      - name: c17
+        type: string
+      - name: c18
+        type: string
+      - name: c19
+        type: string
+      - name: c20
+        type: string
+      - name: c21
+        type: string
+      - name: c22
+        type: string
+      - name: c23
+        type: string
+      - name: c24
+        type: string
+      - name: c25
+        type: string
+      - name: c26
+        type: string
+      - name: c27
+        type: string
+      - name: c28
+        type: string
+      - name: c29
+        type: string
+      - name: c30
+        type: string
+      - name: c31
+        type: string
+      - name: c32
+        type: string
+      - name: c33
+        type: string
+      - name: c34
+        type: string
+      - name: c35
+        type: string
+      - name: c36
+        type: string
+      - name: c37
+        type: string
+      - name: c38
+        type: string
+      - name: c39
+        type: string
+      - name: c40
+        type: string
+      - name: c41
+        type: string
+      - name: c42
+        type: string
+      - name: c43
+        type: string
+      - name: c44
+        type: string
+      - name: c45
+        type: string
+      - name: c46
+        type: string
+      - name: c47
+        type: string
+      - name: c48
+        type: string
+      - name: c49
+        type: string
+      - name: c50
+        type: string
+      - name: c51
+        type: string
+      - name: c52
+        type: string
+      - name: c53
+        type: string
+      - name: c54
+        type: string
+      - name: c55
+        type: string
+      - name: c56
+        type: string
+      - name: c57
+        type: string
+      - name: c58
+        type: string
+      - name: c59
+        type: string
+      - name: c60
+        type: string
+      - name: c61
+        type: string
+      - name: c62
+        type: string
+      - name: c63
+        type: string
+      - name: c64
+        type: string
+      - name: c65
+        type: string
+      - name: c66
+        type: string
+      - name: c67
+        type: string
+      - name: c68
+        type: string
+      - name: c69
+        type: string
+      - name: c70
+        type: string
+      - name: c71
+        type: string
+      - name: c72
+        type: string
+      - name: c73
+        type: string
+      - name: c74
+        type: string
+      - name: c75
+        type: string
+      - name: c76
+        type: string
+      - name: c77
+        type: string
+      - name: c78
+        type: string
+      - name: c79
+        type: string
+      - name: c80
+        type: string
+      - name: c81
+        type: string
+      - name: c82
+        type: string
+      - name: c83
+        type: string
+      - name: c84
+        type: string
+      - name: c85
+        type: string
+      - name: c86
+        type: string
+      - name: c87
+        type: string
+      - name: c88
+        type: string
+      - name: c89
+        type: string
+      - name: c90
+        type: string
+      - name: c91
+        type: string
+      - name: c92
+        type: string
+      - name: c93
+        type: string
+      - name: c94
+        type: string
+      - name: c95
+        type: string
+      - name: c96
+        type: string
+      - name: c97
+        type: string
+      - name: c98
+        type: string
+      - name: c99
+        type: string
+      quote: "\""
+      escape: "\""
+    decoders:
+    - type: gzip
+  out:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: 20250530_2/
+    file_ext: ".csv"
+    acl: NOT_SET
+    suppress_output_files: false
+    sequence_format: "%03d"
+    multipart_upload_enabled: false
+    custom_variables: []
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
+    encoders:
+  data_settings:
+    columns:
+    - name: c0
+      src: c0
+      default: ''
+      type: string
+    - name: c1
+      src: c1
+      default: ''
+      type: string
+    - name: c2
+      src: c2
+      default: ''
+      type: string
+    - name: c3
+      src: c3
+      default: ''
+      type: string
+    - name: c4
+      src: c4
+      default: ''
+      type: string
+    - name: c5
+      src: c5
+      default: ''
+      type: string
+    - name: c6
+      src: c6
+      default: ''
+      type: string
+    - name: c7
+      src: c7
+      default: ''
+      type: string
+    - name: c8
+      src: c8
+      default: ''
+      type: string
+    - name: c9
+      src: c9
+      default: ''
+      type: string
+    - name: c10
+      src: c10
+      default: ''
+      type: string
+    - name: c11
+      src: c11
+      default: ''
+      type: string
+    - name: c12
+      src: c12
+      default: ''
+      type: string
+    - name: c13
+      src: c13
+      default: ''
+      type: string
+    - name: c14
+      src: c14
+      default: ''
+      type: string
+    - name: c15
+      src: c15
+      default: ''
+      type: string
+    - name: c16
+      src: c16
+      default: ''
+      type: string
+    - name: c17
+      src: c17
+      default: ''
+      type: string
+    - name: c18
+      src: c18
+      default: ''
+      type: string
+    - name: c19
+      src: c19
+      default: ''
+      type: string
+    - name: c20
+      src: c20
+      default: ''
+      type: string
+    - name: c21
+      src: c21
+      default: ''
+      type: string
+    - name: c22
+      src: c22
+      default: ''
+      type: string
+    - name: c23
+      src: c23
+      default: ''
+      type: string
+    - name: c24
+      src: c24
+      default: ''
+      type: string
+    - name: c25
+      src: c25
+      default: ''
+      type: string
+    - name: c26
+      src: c26
+      default: ''
+      type: string
+    - name: c27
+      src: c27
+      default: ''
+      type: string
+    - name: c28
+      src: c28
+      default: ''
+      type: string
+    - name: c29
+      src: c29
+      default: ''
+      type: string
+    - name: c30
+      src: c30
+      default: ''
+      type: string
+    - name: c31
+      src: c31
+      default: ''
+      type: string
+    - name: c32
+      src: c32
+      default: ''
+      type: string
+    - name: c33
+      src: c33
+      default: ''
+      type: string
+    - name: c34
+      src: c34
+      default: ''
+      type: string
+    - name: c35
+      src: c35
+      default: ''
+      type: string
+    - name: c36
+      src: c36
+      default: ''
+      type: string
+    - name: c37
+      src: c37
+      default: ''
+      type: string
+    - name: c38
+      src: c38
+      default: ''
+      type: string
+    - name: c39
+      src: c39
+      default: ''
+      type: string
+    - name: c40
+      src: c40
+      default: ''
+      type: string
+    - name: c41
+      src: c41
+      default: ''
+      type: string
+    - name: c42
+      src: c42
+      default: ''
+      type: string
+    - name: c43
+      src: c43
+      default: ''
+      type: string
+    - name: c44
+      src: c44
+      default: ''
+      type: string
+    - name: c45
+      src: c45
+      default: ''
+      type: string
+    - name: c46
+      src: c46
+      default: ''
+      type: string
+    - name: c47
+      src: c47
+      default: ''
+      type: string
+    - name: c48
+      src: c48
+      default: ''
+      type: string
+    - name: c49
+      src: c49
+      default: ''
+      type: string
+    - name: c50
+      src: c50
+      default: ''
+      type: string
+    - name: c51
+      src: c51
+      default: ''
+      type: string
+    - name: c52
+      src: c52
+      default: ''
+      type: string
+    - name: c53
+      src: c53
+      default: ''
+      type: string
+    - name: c54
+      src: c54
+      default: ''
+      type: string
+    - name: c55
+      src: c55
+      default: ''
+      type: string
+    - name: c56
+      src: c56
+      default: ''
+      type: string
+    - name: c57
+      src: c57
+      default: ''
+      type: string
+    - name: c58
+      src: c58
+      default: ''
+      type: string
+    - name: c59
+      src: c59
+      default: ''
+      type: string
+    - name: c60
+      src: c60
+      default: ''
+      type: string
+    - name: c61
+      src: c61
+      default: ''
+      type: string
+    - name: c62
+      src: c62
+      default: ''
+      type: string
+    - name: c63
+      src: c63
+      default: ''
+      type: string
+    - name: c64
+      src: c64
+      default: ''
+      type: string
+    - name: c65
+      src: c65
+      default: ''
+      type: string
+    - name: c66
+      src: c66
+      default: ''
+      type: string
+    - name: c67
+      src: c67
+      default: ''
+      type: string
+    - name: c68
+      src: c68
+      default: ''
+      type: string
+    - name: c69
+      src: c69
+      default: ''
+      type: string
+    - name: c70
+      src: c70
+      default: ''
+      type: string
+    - name: c71
+      src: c71
+      default: ''
+      type: string
+    - name: c72
+      src: c72
+      default: ''
+      type: string
+    - name: c73
+      src: c73
+      default: ''
+      type: string
+    - name: c74
+      src: c74
+      default: ''
+      type: string
+    - name: c75
+      src: c75
+      default: ''
+      type: string
+    - name: c76
+      src: c76
+      default: ''
+      type: string
+    - name: c77
+      src: c77
+      default: ''
+      type: string
+    - name: c78
+      src: c78
+      default: ''
+      type: string
+    - name: c79
+      src: c79
+      default: ''
+      type: string
+    - name: c80
+      src: c80
+      default: ''
+      type: string
+    - name: c81
+      src: c81
+      default: ''
+      type: string
+    - name: c82
+      src: c82
+      default: ''
+      type: string
+    - name: c83
+      src: c83
+      default: ''
+      type: string
+    - name: c84
+      src: c84
+      default: ''
+      type: string
+    - name: c85
+      src: c85
+      default: ''
+      type: string
+    - name: c86
+      src: c86
+      default: ''
+      type: string
+    - name: c87
+      src: c87
+      default: ''
+      type: string
+    - name: c88
+      src: c88
+      default: ''
+      type: string
+    - name: c89
+      src: c89
+      default: ''
+      type: string
+    - name: c90
+      src: c90
+      default: ''
+      type: string
+    - name: c91
+      src: c91
+      default: ''
+      type: string
+    - name: c92
+      src: c92
+      default: ''
+      type: string
+    - name: c93
+      src: c93
+      default: ''
+      type: string
+    - name: c94
+      src: c94
+      default: ''
+      type: string
+    - name: c95
+      src: c95
+      default: ''
+      type: string
+    - name: c96
+      src: c96
+      default: ''
+      type: string
+    - name: c97
+      src: c97
+      default: ''
+      type: string
+    - name: c98
+      src: c98
+      default: ''
+      type: string
+    - name: c99
+      src: c99
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

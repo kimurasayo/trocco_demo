@@ -16,42 +16,10 @@ transfer_option:
     gcs_uri_format: custom_path
     query: |-
       SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      UNION ALL
-      SELECT * FROM `systemn-playground.kimura_us_test.large_data`
-      LIMIT 1000001;
+      ;
     location: US
     temp_dataset: kimura_us_test
-    cleanup_gcs_files: true
+    cleanup_gcs_files: false
     use_legacy_sql: false
     cache: true
     file_format: CSV

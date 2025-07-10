@@ -1,6 +1,6 @@
 ---
-id: 282098
-name: ルックアップ機能のテスト
+id: 343564
+name: 子オブジェクトの検証
 description: ''
 user:
   id: 6335
@@ -9,7 +9,7 @@ transfer_option:
   transfer_type: normal
   in:
     type: local_file
-    file_name: 1107.csv
+    file_name: '0528.csv'
     parser:
       type: csv
       delimiter: ","
@@ -25,30 +25,31 @@ transfer_option:
       newline: LF
       charset: UTF-8
       columns:
-      - name: name
+      - name: c0
         type: string
-      - name: tel
+      - name: c1
         type: string
       quote: "\""
       escape: "\""
     decoders: []
   out:
-    type: kintone
-    kintone_connection:
-      id: 579
-      name: kintone kimura
-    app_id: '213'
-    mode: insert
+    type: salesforce
+    salesforce_connection:
+      id: 240
+      name: csdemo-Salesforce[sandbox]
+    api_version: '54.0'
+    object: kimura_test_child__c
+    action_type: insert
     ignore_nulls: false
-    chunk_size: 100
+    throw_if_failed: true
   data_settings:
     columns:
-    - name: name
-      src: name
+    - name: Name
+      src: c0
       default: ''
       type: string
-    - name: tel
-      src: tel
+    - name: kimura_test__c
+      src: c1
       default: ''
       type: string
   is_runnable_concurrently: false

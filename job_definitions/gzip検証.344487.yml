@@ -1,6 +1,6 @@
 ---
-id: 277421
-name: S3 -> BQ
+id: 344487
+name: gzip検証
 description: ''
 user:
   id: 6335
@@ -14,14 +14,13 @@ transfer_option:
       name: csdemo-AmazonS3
     region: ap-northeast-1
     bucket: trocco-test-kimura
-    path_prefix: 20241107/
-    path_match_pattern: "\\.zip$"
-    decompression_type: zip
+    path_prefix: 20250530_2/
+    path_match_pattern: "\\.gz$"
+    decompression_type: guess
     skip_header_line: false
     stop_when_file_not_found: false
-    incremental_loading_type: path
     custom_variables: []
-    incremental_loading_enabled: true
+    incremental_loading_enabled: false
     parser:
       type: csv
       delimiter: ","
@@ -37,28 +36,22 @@ transfer_option:
       newline: LF
       charset: UTF-8
       columns:
-      - name: name
+      - name: id
         type: string
-      - name: tel
+      - name: name
         type: string
       - name: age
         type: long
-      - name: other
-        type: string
-      - name: other2
-        type: string
       quote: "\""
       escape: "\""
-    decoders:
-    - type: zip
-      match_name:
+    decoders: []
   out:
     type: bigquery
     bigquery_connection:
       id: 761
       name: csdemo-BigQuery
     dataset: kimura_test
-    table: '1107'
+    table: '0530'
     auto_create_dataset: false
     mode: replace
     location: asia-northeast1
@@ -77,26 +70,20 @@ transfer_option:
     custom_variables: []
   data_settings:
     columns:
-    - name: name
-      src: name
+    - name: id
+      src: id
       default: ''
       type: string
-    - name: tel
-      src: tel
+    - name: name
+      src: name
       default: ''
       type: string
     - name: age
       src: age
       default: ''
       type: long
-    - name: other
-      src: other
-      default: ''
-      type: string
-    - name: other2
-      src: other2
-      default: ''
-      type: string
+    transfered_time_column:
+      column_name: time
   is_runnable_concurrently: false
   retry_limit: 0
 labels: []

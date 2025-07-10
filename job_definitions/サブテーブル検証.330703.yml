@@ -12,7 +12,7 @@ transfer_option:
     google_spreadsheets_connection:
       id: 1123
       name: kimura-GoogleSpreadsheets
-    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=0#gid=0
+    spreadsheets_url: https://docs.google.com/spreadsheets/d/1JV07h0Bn4WB-BZHvIg0N9dYVYmo010EHdLoGP4AvvtI/edit?gid=1326380098#gid=1326380098
     worksheet_title: subtable
     start_row: 2
     start_column: A
@@ -40,14 +40,27 @@ transfer_option:
   out:
     type: kintone
     kintone_connection:
-      id: 54
-      name: csdemo-kintone
+      id: 579
+      name: kintone kimura
     app_id: '239'
     mode: upsert
     update_key: ID
     ignore_nulls: false
     reduce_key: ID
     chunk_size: 100
+    column_options:
+      相談日付:
+        field_code: 相談日付
+        type: DATE
+        timezone: UTC
+      対応完了日:
+        field_code: 対応完了日
+        type: DATE
+        timezone: UTC
+      対応状況.日付:
+        field_code: 日付
+        type: DATE
+        timezone: UTC
   data_settings:
     columns:
     - name: ID
@@ -81,12 +94,6 @@ transfer_option:
       src: 入力者
       default: ''
       type: string
-    row_filters:
-      condition: and
-      conditions:
-      - column: 相談日付
-        operator: ">"
-        argument: '2025-04-15'
   is_runnable_concurrently: false
   retry_limit: 0
 labels: []

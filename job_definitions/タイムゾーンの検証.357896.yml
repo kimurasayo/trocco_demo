@@ -1,6 +1,6 @@
 ---
-id: 285976
-name: 日付、カスタム変数検証
+id: 357896
+name: タイムゾーンの検証
 description: ''
 user:
   id: 6335
@@ -8,30 +8,15 @@ user:
 transfer_option:
   transfer_type: normal
   in:
-    type: google_drive
-    google_drive_connection:
-      id: 325
-      name: csdemo-GoogleDrive-kimura
-    folder_id: 1RB1VkempURydDvSUeng3S969DCgihKro
-    file_match_pattern: sample$date$
+    type: box
+    box_connection:
+      id: 19
+      name: csdemo-Box
+    folder_id: '267303136031'
+    file_prefix: 0606.csv
     decompression_type:
-    skip_header_line: false
     stop_when_file_not_found: false
-    custom_variables:
-    - type: timestamp
-      name: "$date$"
-      quantity: 1
-      unit: date
-      direction: ago
-      time_zone: Asia/Tokyo
-      format: "%Y%m%d"
-    - type: timestamp_runtime
-      name: "$date_run$"
-      quantity: 1
-      unit: date
-      direction: ago
-      time_zone: Asia/Tokyo
-      format: "%Y%m%d"
+    custom_variables: []
     parser:
       type: csv
       delimiter: ","
@@ -47,12 +32,15 @@ transfer_option:
       newline: LF
       charset: UTF-8
       columns:
-      - name: id
-        type: long
-      - name: name
-        type: string
-      - name: text
-        type: string
+      - name: c0
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S %Z"
+      - name: c1
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S %Z"
+      - name: c2
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S %Z"
       quote: "\""
       escape: "\""
     decoders: []
@@ -64,31 +52,42 @@ transfer_option:
     warehouse: COMPUTE_WH
     database: TEST_BY_KIMURA
     schema: PUBLIC
-    table: 1202_test
+    table: '0701'
     retry_limit: 12
     retry_wait: 1000
     max_retry_wait: 1800000
     mode: replace
     default_timezone: UTC
     column_options:
+      c0:
+        type: TIMESTAMP
+        timezone: UTC
+      c1:
+        type: TIMESTAMP
+        timezone: Asia/Tokyo
     empty_field_as_null: true
     batch_size: 50
     delete_stage_on_error: false
     custom_variables: []
   data_settings:
     columns:
-    - name: id
-      src: id
+    - name: c0
+      src: c0
       default: ''
-      type: long
-    - name: name
-      src: name
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S %Z"
+    - name: c1
+      src: c1
       default: ''
-      type: string
-    - name: text
-      src: text
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S %Z"
+    - name: c2
+      src: c2
       default: ''
-      type: string
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S %Z"
+    transfered_time_column:
+      column_name: time
   is_runnable_concurrently: false
   retry_limit: 0
 labels: []

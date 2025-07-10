@@ -16,6 +16,7 @@ transfer_option:
     file_match_pattern: 1107_2.csv
     decompression_type:
     skip_header_line: false
+    stop_when_file_not_found: false
     custom_variables: []
     parser:
       type: csv

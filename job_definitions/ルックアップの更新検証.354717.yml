@@ -1,6 +1,6 @@
 ---
-id: 282098
-name: ルックアップ機能のテスト
+id: 354717
+name: ルックアップの更新検証
 description: ''
 user:
   id: 6335
@@ -9,7 +9,7 @@ transfer_option:
   transfer_type: normal
   in:
     type: local_file
-    file_name: 1107.csv
+    file_name: 0624.csv
     parser:
       type: csv
       delimiter: ","
@@ -25,9 +25,9 @@ transfer_option:
       newline: LF
       charset: UTF-8
       columns:
+      - name: "$id"
+        type: long
       - name: name
-        type: string
-      - name: tel
         type: string
       quote: "\""
       escape: "\""
@@ -35,20 +35,21 @@ transfer_option:
   out:
     type: kintone
     kintone_connection:
-      id: 579
-      name: kintone kimura
+      id: 54
+      name: csdemo-kintone
     app_id: '213'
-    mode: insert
+    mode: upsert
+    update_key: "$id"
     ignore_nulls: false
     chunk_size: 100
   data_settings:
     columns:
+    - name: "$id"
+      src: "$id"
+      default: ''
+      type: long
     - name: name
       src: name
-      default: ''
-      type: string
-    - name: tel
-      src: tel
       default: ''
       type: string
   is_runnable_concurrently: false

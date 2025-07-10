@@ -1,0 +1,295 @@
+---
+id: 343868
+name: 検証_cs_test_add_table_2
+description:
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: mysql
+    mysql_connection:
+      id: 281
+      name: csdemo-CloudMySQL
+    database: test
+    query: |-
+      SELECT *
+      FROM `cs_test_add_table_2`
+    default_timezone: Asia/Tokyo
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    use_legacy_datetime_code: false
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: cs_test_add_table_2
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table:
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: Id
+      src: Id
+      default:
+      type: string
+    - name: IsDeleted
+      src: IsDeleted
+      default:
+      type: boolean
+    - name: MasterRecordId
+      src: MasterRecordId
+      default:
+      type: string
+    - name: Name
+      src: Name
+      default:
+      type: string
+    - name: Type
+      src: Type
+      default:
+      type: string
+    - name: ParentId
+      src: ParentId
+      default:
+      type: string
+    - name: BillingStreet
+      src: BillingStreet
+      default:
+      type: string
+    - name: BillingCity
+      src: BillingCity
+      default:
+      type: string
+    - name: BillingState
+      src: BillingState
+      default:
+      type: string
+    - name: BillingPostalCode
+      src: BillingPostalCode
+      default:
+      type: long
+    - name: BillingCountry
+      src: BillingCountry
+      default:
+      type: string
+    - name: BillingLatitude
+      src: BillingLatitude
+      default:
+      type: string
+    - name: BillingLongitude
+      src: BillingLongitude
+      default:
+      type: string
+    - name: BillingGeocodeAccuracy
+      src: BillingGeocodeAccuracy
+      default:
+      type: string
+    - name: ShippingStreet
+      src: ShippingStreet
+      default:
+      type: string
+    - name: ShippingCity
+      src: ShippingCity
+      default:
+      type: string
+    - name: ShippingState
+      src: ShippingState
+      default:
+      type: string
+    - name: ShippingPostalCode
+      src: ShippingPostalCode
+      default:
+      type: long
+    - name: ShippingCountry
+      src: ShippingCountry
+      default:
+      type: string
+    - name: ShippingLatitude
+      src: ShippingLatitude
+      default:
+      type: string
+    - name: ShippingLongitude
+      src: ShippingLongitude
+      default:
+      type: string
+    - name: ShippingGeocodeAccuracy
+      src: ShippingGeocodeAccuracy
+      default:
+      type: string
+    - name: Phone
+      src: Phone
+      default:
+      type: string
+    - name: Fax
+      src: Fax
+      default:
+      type: string
+    - name: AccountNumber
+      src: AccountNumber
+      default:
+      type: string
+    - name: Website
+      src: Website
+      default:
+      type: string
+    - name: PhotoUrl
+      src: PhotoUrl
+      default:
+      type: string
+    - name: Sic
+      src: Sic
+      default:
+      type: long
+    - name: Industry
+      src: Industry
+      default:
+      type: string
+    - name: AnnualRevenue
+      src: AnnualRevenue
+      default:
+      type: double
+    - name: NumberOfEmployees
+      src: NumberOfEmployees
+      default:
+      type: long
+    - name: Ownership
+      src: Ownership
+      default:
+      type: string
+    - name: TickerSymbol
+      src: TickerSymbol
+      default:
+      type: string
+    - name: Description
+      src: Description
+      default:
+      type: string
+    - name: Rating
+      src: Rating
+      default:
+      type: string
+    - name: Site
+      src: Site
+      default:
+      type: string
+    - name: OwnerId
+      src: OwnerId
+      default:
+      type: string
+    - name: CreatedById
+      src: CreatedById
+      default:
+      type: string
+    - name: LastModifiedById
+      src: LastModifiedById
+      default:
+      type: string
+    - name: LastActivityDate
+      src: LastActivityDate
+      default:
+      type: string
+    - name: LastViewedDate
+      src: LastViewedDate
+      default:
+      type: string
+    - name: LastReferencedDate
+      src: LastReferencedDate
+      default:
+      type: string
+    - name: Jigsaw
+      src: Jigsaw
+      default:
+      type: string
+    - name: JigsawCompanyId
+      src: JigsawCompanyId
+      default:
+      type: string
+    - name: CleanStatus
+      src: CleanStatus
+      default:
+      type: string
+    - name: AccountSource
+      src: AccountSource
+      default:
+      type: string
+    - name: DunsNumber
+      src: DunsNumber
+      default:
+      type: string
+    - name: Tradestyle
+      src: Tradestyle
+      default:
+      type: string
+    - name: NaicsCode
+      src: NaicsCode
+      default:
+      type: string
+    - name: NaicsDesc
+      src: NaicsDesc
+      default:
+      type: string
+    - name: YearStarted
+      src: YearStarted
+      default:
+      type: string
+    - name: SicDesc
+      src: SicDesc
+      default:
+      type: string
+    - name: DandbCompanyId
+      src: DandbCompanyId
+      default:
+      type: string
+    - name: primeNumber__CustomerPriority__c
+      src: primeNumber__CustomerPriority__c
+      default:
+      type: string
+    - name: primeNumber__SLA__c
+      src: primeNumber__SLA__c
+      default:
+      type: string
+    - name: primeNumber__Active__c
+      src: primeNumber__Active__c
+      default:
+      type: boolean
+    - name: primeNumber__NumberofLocations__c
+      src: primeNumber__NumberofLocations__c
+      default:
+      type: double
+    - name: primeNumber__UpsellOpportunity__c
+      src: primeNumber__UpsellOpportunity__c
+      default:
+      type: string
+    - name: primeNumber__SLASerialNumber__c
+      src: primeNumber__SLASerialNumber__c
+      default:
+      type: long
+    - name: primeNumber__AccountCode__c
+      src: primeNumber__AccountCode__c
+      default:
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

@@ -1,0 +1,99 @@
+---
+id: 330124
+name: Marketo->BigQuery_demo (Copy)
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: marketo
+    marketo_connection:
+      id: 34
+      name: csdemo-Marketo
+    target: activity
+    from_date: "$yesterday$"
+    to_date: "$yesterday$"
+    polling_interval_second: 60
+    bulk_job_timeout_second: 3600
+    activity_type_ids:
+    - 2
+    custom_variables:
+    - type: timestamp
+      name: "$yesterday$"
+      quantity: 1
+      unit: date
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y-%m-%dT00:00:00+0900"
+    - type: timestamp
+      name: "$now$"
+      quantity: 0
+      unit: date
+      direction: ago
+      time_zone: Asia/Tokyo
+      format: "%Y-%m-%dT00:00:00+0900"
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: marketotest
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: marketoGUID
+      src: marketoGUID
+      default: ''
+      type: string
+    - name: leadId
+      src: leadId
+      default: ''
+      type: string
+    - name: activityDate
+      src: activityDate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: activityTypeId
+      src: activityTypeId
+      default: ''
+      type: string
+    - name: campaignId
+      src: campaignId
+      default: ''
+      type: string
+    - name: primaryAttributeValueId
+      src: primaryAttributeValueId
+      default: ''
+      type: string
+    - name: primaryAttributeValue
+      src: primaryAttributeValue
+      default: ''
+      type: string
+    - name: attributes
+      src: attributes
+      default: ''
+      type: json
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

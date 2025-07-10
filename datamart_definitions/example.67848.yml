@@ -1,0 +1,30 @@
+---
+id: 67848
+name: example
+description:
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: SELECT 1
+  destination_dataset: kimura_test
+  destination_table: '250527'
+  write_disposition: append
+  before_load: |-
+    delete from
+      `kimuta_test.0210_dm`
+  custom_variables:
+  - type: timestamp
+    name: "$date$"
+    quantity: 0
+    unit: date
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y-%m-%d"
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

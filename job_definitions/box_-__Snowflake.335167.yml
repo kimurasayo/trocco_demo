@@ -1,6 +1,6 @@
 ---
-id: 330926
-name: Google Drive -> Snowflake
+id: 335167
+name: box -> Snowflake
 description: ''
 user:
   id: 6335
@@ -8,14 +8,13 @@ user:
 transfer_option:
   transfer_type: normal
   in:
-    type: google_drive
-    google_drive_connection:
-      id: 325
-      name: csdemo-GoogleDrive-kimura
-    folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
-    file_match_pattern: sample_customer_data.csv
+    type: box
+    box_connection:
+      id: 259
+      name: sample-Box
+    folder_id: '111111 '
+    file_prefix: sample_customer_data.csv
     decompression_type:
-    skip_header_line: false
     stop_when_file_not_found: false
     custom_variables: []
     parser:
@@ -57,12 +56,12 @@ transfer_option:
   out:
     type: snowflake
     snowflake_connection:
-      id: 1568
-      name: Snowflake - クックブック
+      id: 47
+      name: csdemo-Snowflake
     warehouse: COMPUTE_WH
-    database: COOKBOOK
+    database: DEMO_DB
     schema: PUBLIC
-    table: SAMPLE_CUSTOMER_DATA
+    table: CUSTOMER_DATA
     retry_limit: 12
     retry_wait: 1000
     max_retry_wait: 1800000
@@ -80,14 +79,6 @@ transfer_option:
       default: ''
       type: string
     - name: AGE
-      src: 年齢
-      default: ''
-      type: long
-    - name: BIRTHDAY
-      src: 生年月日
-      default: ''
-      type: string
-    - name: GENDER
       src: 性別
       default: ''
       type: string
@@ -95,12 +86,8 @@ transfer_option:
       src: メールアドレス
       default: ''
       type: string
-    - name: NUMBER
+    - name: PHONE
       src: 携帯電話番号
-      default: ''
-      type: string
-    - name: ZIP_CODE
-      src: 郵便番号
       default: ''
       type: string
     - name: ADDRESS
@@ -110,9 +97,23 @@ transfer_option:
     row_filters:
       condition: and
       conditions:
-      - column: 年齢
-        operator: ">"
-        argument: '20'
+      - column: 性別
+        operator: "=="
+        argument: 女
+    masking:
+      columns:
+      - type: email
+        length: 8
+        name: EMAIL
+    string_replacement_columns:
+      target_columns:
+        PHONE:
+        - type: regexp_replace
+          pattern: "-"
+          to: ''
+    filter_string_transforms:
+    - column_name: ADDRESS
+      type: normalize_nfkc
   is_runnable_concurrently: false
   retry_limit: 0
 labels: []

@@ -1,0 +1,48 @@
+---
+id: 66750
+name: カスタム変数検証
+description: ''
+datamart:
+  type: bigquery
+  bigquery_connection_id: 761
+  query_mode: insert
+  query: select "$from_yyyy-mm_run$", "$to_yyyy-mm_run$", "$from_yyyy-mm$", "$to_yyyy-mm$"
+  destination_dataset: kimura_test
+  destination_table: '0514'
+  write_disposition: truncate
+  custom_variables:
+  - type: timestamp_runtime
+    name: "$from_yyyy-mm_run$"
+    quantity: 1
+    unit: month
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y-%m"
+  - type: timestamp_runtime
+    name: "$to_yyyy-mm_run$"
+    quantity: 0
+    unit: month
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y-%m"
+  - type: timestamp
+    name: "$from_yyyy-mm$"
+    quantity: 1
+    unit: month
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y-%m"
+  - type: timestamp
+    name: "$to_yyyy-mm$"
+    quantity: 0
+    unit: month
+    direction: ago
+    time_zone: Asia/Tokyo
+    format: "%Y-%m"
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+is_runnable_concurrently: false
+labels: []
+job_schedules: []
+notifications: []

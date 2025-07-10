@@ -1,0 +1,811 @@
+---
+id: 354757
+name: CSdemo Hubspot → BigQuery(Ticket) (Copy) (Copy)
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: hubspot
+    hubspot_connection:
+      id: 51
+      name: csdemo-HubSpot
+    target: object
+    object_type: ticket
+    limit_per_request: 100
+    custom_variables: []
+    incremental_loading_enabled: true
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: fukazawa_test
+    table: demo_hubspot_ticket
+    auto_create_dataset: false
+    mode: merge
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    merge_keys:
+    - id
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: created_at
+      src: created_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: updated_at
+      src: updated_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: closed_date
+      src: closed_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: content
+      src: content
+      default: ''
+      type: string
+    - name: created_by
+      src: created_by
+      default: ''
+      type: double
+    - name: createdate
+      src: createdate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: first_agent_reply_date
+      src: first_agent_reply_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_all_accessible_team_ids
+      src: hs_all_accessible_team_ids
+      default: ''
+      type: string
+    - name: hs_all_assigned_business_unit_ids
+      src: hs_all_assigned_business_unit_ids
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_companies
+      src: hs_all_associated_contact_companies
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_emails
+      src: hs_all_associated_contact_emails
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_firstnames
+      src: hs_all_associated_contact_firstnames
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_lastnames
+      src: hs_all_associated_contact_lastnames
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_mobilephones
+      src: hs_all_associated_contact_mobilephones
+      default: ''
+      type: string
+    - name: hs_all_associated_contact_phones
+      src: hs_all_associated_contact_phones
+      default: ''
+      type: string
+    - name: hs_all_conversation_mentions
+      src: hs_all_conversation_mentions
+      default: ''
+      type: string
+    - name: hs_all_owner_ids
+      src: hs_all_owner_ids
+      default: ''
+      type: string
+    - name: hs_all_team_ids
+      src: hs_all_team_ids
+      default: ''
+      type: string
+    - name: hs_applied_sla_rule_config_at
+      src: hs_applied_sla_rule_config_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_applied_sla_rule_config_id
+      src: hs_applied_sla_rule_config_id
+      default: ''
+      type: double
+    - name: hs_applied_sla_schedule_at
+      src: hs_applied_sla_schedule_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_applied_sla_schedule_id
+      src: hs_applied_sla_schedule_id
+      default: ''
+      type: double
+    - name: hs_assigned_team_ids
+      src: hs_assigned_team_ids
+      default: ''
+      type: string
+    - name: hs_assignment_method
+      src: hs_assignment_method
+      default: ''
+      type: string
+    - name: hs_auto_generated_from_thread_id
+      src: hs_auto_generated_from_thread_id
+      default: ''
+      type: double
+    - name: hs_conversations_originating_message_id
+      src: hs_conversations_originating_message_id
+      default: ''
+      type: string
+    - name: hs_conversations_originating_thread_id
+      src: hs_conversations_originating_thread_id
+      default: ''
+      type: double
+    - name: hs_created_by_user_id
+      src: hs_created_by_user_id
+      default: ''
+      type: double
+    - name: hs_createdate
+      src: hs_createdate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_custom_inbox
+      src: hs_custom_inbox
+      default: ''
+      type: double
+    - name: hs_date_entered_1
+      src: hs_date_entered_1
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_entered_2
+      src: hs_date_entered_2
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_entered_3
+      src: hs_date_entered_3
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_entered_4
+      src: hs_date_entered_4
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_exited_1
+      src: hs_date_exited_1
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_exited_2
+      src: hs_date_exited_2
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_exited_3
+      src: hs_date_exited_3
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_date_exited_4
+      src: hs_date_exited_4
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_draft_user_ids
+      src: hs_draft_user_ids
+      default: ''
+      type: string
+    - name: hs_email_subject
+      src: hs_email_subject
+      default: ''
+      type: string
+    - name: hs_external_object_ids
+      src: hs_external_object_ids
+      default: ''
+      type: string
+    - name: hs_feedback_last_ces_follow_up
+      src: hs_feedback_last_ces_follow_up
+      default: ''
+      type: string
+    - name: hs_feedback_last_ces_rating
+      src: hs_feedback_last_ces_rating
+      default: ''
+      type: string
+    - name: hs_feedback_last_survey_date
+      src: hs_feedback_last_survey_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_file_upload
+      src: hs_file_upload
+      default: ''
+      type: string
+    - name: hs_first_agent_message_sent_at
+      src: hs_first_agent_message_sent_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_first_visitor_message_sentiment_score
+      src: hs_first_visitor_message_sentiment_score
+      default: ''
+      type: double
+    - name: hs_form_id
+      src: hs_form_id
+      default: ''
+      type: string
+    - name: hs_form_submission_conversion_id
+      src: hs_form_submission_conversion_id
+      default: ''
+      type: string
+    - name: hs_help_desk_onboarding_ticket
+      src: hs_help_desk_onboarding_ticket
+      default: ''
+      type: string
+    - name: hs_helpdesk_sort_timestamp
+      src: hs_helpdesk_sort_timestamp
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_in_helpdesk
+      src: hs_in_helpdesk
+      default: ''
+      type: boolean
+    - name: hs_inbox_id
+      src: hs_inbox_id
+      default: ''
+      type: double
+    - name: hs_is_latest_message_failed
+      src: hs_is_latest_message_failed
+      default: ''
+      type: boolean
+    - name: hs_is_latest_message_hidden_from_all
+      src: hs_is_latest_message_hidden_from_all
+      default: ''
+      type: boolean
+    - name: hs_is_visible_in_help_desk
+      src: hs_is_visible_in_help_desk
+      default: ''
+      type: boolean
+    - name: hs_last_closed_date
+      src: hs_last_closed_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_last_email_activity
+      src: hs_last_email_activity
+      default: ''
+      type: string
+    - name: hs_last_email_date
+      src: hs_last_email_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_last_email_id
+      src: hs_last_email_id
+      default: ''
+      type: double
+    - name: hs_last_email_type
+      src: hs_last_email_type
+      default: ''
+      type: string
+    - name: hs_last_message_from_visitor
+      src: hs_last_message_from_visitor
+      default: ''
+      type: boolean
+    - name: hs_last_message_received_at
+      src: hs_last_message_received_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_last_message_sent_at
+      src: hs_last_message_sent_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_last_visitor_message_sentiment_score
+      src: hs_last_visitor_message_sentiment_score
+      default: ''
+      type: double
+    - name: hs_lastactivitydate
+      src: hs_lastactivitydate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_lastcontacted
+      src: hs_lastcontacted
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_lastmodifieddate
+      src: hs_lastmodifieddate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_latest_message_attachment_types
+      src: hs_latest_message_attachment_types
+      default: ''
+      type: string
+    - name: hs_latest_message_is_forwarded_email
+      src: hs_latest_message_is_forwarded_email
+      default: ''
+      type: boolean
+    - name: hs_latest_message_is_thread_comment
+      src: hs_latest_message_is_thread_comment
+      default: ''
+      type: boolean
+    - name: hs_latest_message_seen_by_agent_ids
+      src: hs_latest_message_seen_by_agent_ids
+      default: ''
+      type: string
+    - name: hs_latest_message_visible_to_visitor
+      src: hs_latest_message_visible_to_visitor
+      default: ''
+      type: string
+    - name: hs_latest_message_visible_to_visitor_sent_at
+      src: hs_latest_message_visible_to_visitor_sent_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_mentioned_note_user_ids
+      src: hs_mentioned_note_user_ids
+      default: ''
+      type: string
+    - name: hs_mentions_user_ids
+      src: hs_mentions_user_ids
+      default: ''
+      type: string
+    - name: hs_merged_object_ids
+      src: hs_merged_object_ids
+      default: ''
+      type: string
+    - name: hs_most_relevant_sla_status
+      src: hs_most_relevant_sla_status
+      default: ''
+      type: string
+    - name: hs_most_relevant_sla_type
+      src: hs_most_relevant_sla_type
+      default: ''
+      type: string
+    - name: hs_msteams_message_id
+      src: hs_msteams_message_id
+      default: ''
+      type: string
+    - name: hs_nextactivitydate
+      src: hs_nextactivitydate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_notes_last_activity
+      src: hs_notes_last_activity
+      default: ''
+      type: string
+    - name: hs_notes_next_activity
+      src: hs_notes_next_activity
+      default: ''
+      type: string
+    - name: hs_notes_next_activity_type
+      src: hs_notes_next_activity_type
+      default: ''
+      type: string
+    - name: hs_num_associated_companies
+      src: hs_num_associated_companies
+      default: ''
+      type: double
+    - name: hs_num_associated_conversations
+      src: hs_num_associated_conversations
+      default: ''
+      type: double
+    - name: hs_num_times_contacted
+      src: hs_num_times_contacted
+      default: ''
+      type: double
+    - name: hs_object_id
+      src: hs_object_id
+      default: ''
+      type: double
+    - name: hs_object_source
+      src: hs_object_source
+      default: ''
+      type: string
+    - name: hs_object_source_detail_1
+      src: hs_object_source_detail_1
+      default: ''
+      type: string
+    - name: hs_object_source_detail_2
+      src: hs_object_source_detail_2
+      default: ''
+      type: string
+    - name: hs_object_source_detail_3
+      src: hs_object_source_detail_3
+      default: ''
+      type: string
+    - name: hs_object_source_id
+      src: hs_object_source_id
+      default: ''
+      type: string
+    - name: hs_object_source_label
+      src: hs_object_source_label
+      default: ''
+      type: string
+    - name: hs_object_source_user_id
+      src: hs_object_source_user_id
+      default: ''
+      type: double
+    - name: hs_originating_channel_instance_id
+      src: hs_originating_channel_instance_id
+      default: ''
+      type: string
+    - name: hs_originating_email_engagement_id
+      src: hs_originating_email_engagement_id
+      default: ''
+      type: double
+    - name: hs_originating_generic_channel_id
+      src: hs_originating_generic_channel_id
+      default: ''
+      type: string
+    - name: hs_outbound_ticket
+      src: hs_outbound_ticket
+      default: ''
+      type: boolean
+    - name: hs_overall_visitor_messages_sentiment_score
+      src: hs_overall_visitor_messages_sentiment_score
+      default: ''
+      type: double
+    - name: hs_pinned_engagement_id
+      src: hs_pinned_engagement_id
+      default: ''
+      type: double
+    - name: hs_pipeline
+      src: hs_pipeline
+      default: ''
+      type: string
+    - name: hs_pipeline_stage
+      src: hs_pipeline_stage
+      default: ''
+      type: string
+    - name: hs_primary_company
+      src: hs_primary_company
+      default: ''
+      type: string
+    - name: hs_primary_company_id
+      src: hs_primary_company_id
+      default: ''
+      type: double
+    - name: hs_primary_company_name
+      src: hs_primary_company_name
+      default: ''
+      type: string
+    - name: hs_read_only
+      src: hs_read_only
+      default: ''
+      type: boolean
+    - name: hs_resolution
+      src: hs_resolution
+      default: ''
+      type: string
+    - name: hs_retroactive_sla_update_at
+      src: hs_retroactive_sla_update_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_sales_email_last_replied
+      src: hs_sales_email_last_replied
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_seen_by_agent_ids
+      src: hs_seen_by_agent_ids
+      default: ''
+      type: string
+    - name: hs_shared_team_ids
+      src: hs_shared_team_ids
+      default: ''
+      type: string
+    - name: hs_shared_user_ids
+      src: hs_shared_user_ids
+      default: ''
+      type: string
+    - name: hs_sla_operating_hours
+      src: hs_sla_operating_hours
+      default: ''
+      type: string
+    - name: hs_source_object_id
+      src: hs_source_object_id
+      default: ''
+      type: double
+    - name: hs_tag_ids
+      src: hs_tag_ids
+      default: ''
+      type: string
+    - name: hs_thread_ids_to_restore
+      src: hs_thread_ids_to_restore
+      default: ''
+      type: string
+    - name: hs_ticket_category
+      src: hs_ticket_category
+      default: ''
+      type: string
+    - name: hs_ticket_id
+      src: hs_ticket_id
+      default: ''
+      type: double
+    - name: hs_ticket_language_ai_tag
+      src: hs_ticket_language_ai_tag
+      default: ''
+      type: string
+    - name: hs_ticket_priority
+      src: hs_ticket_priority
+      default: ''
+      type: string
+    - name: hs_ticket_reopened_at
+      src: hs_ticket_reopened_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_time_in_1
+      src: hs_time_in_1
+      default: ''
+      type: double
+    - name: hs_time_in_2
+      src: hs_time_in_2
+      default: ''
+      type: double
+    - name: hs_time_in_3
+      src: hs_time_in_3
+      default: ''
+      type: double
+    - name: hs_time_in_4
+      src: hs_time_in_4
+      default: ''
+      type: double
+    - name: hs_time_to_close_in_operating_hours
+      src: hs_time_to_close_in_operating_hours
+      default: ''
+      type: double
+    - name: hs_time_to_close_sla_at
+      src: hs_time_to_close_sla_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_time_to_close_sla_status
+      src: hs_time_to_close_sla_status
+      default: ''
+      type: string
+    - name: hs_time_to_first_response_in_operating_hours
+      src: hs_time_to_first_response_in_operating_hours
+      default: ''
+      type: double
+    - name: hs_time_to_first_response_sla_at
+      src: hs_time_to_first_response_sla_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_time_to_first_response_sla_status
+      src: hs_time_to_first_response_sla_status
+      default: ''
+      type: string
+    - name: hs_time_to_next_response_sla_at
+      src: hs_time_to_next_response_sla_at
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_time_to_next_response_sla_status
+      src: hs_time_to_next_response_sla_status
+      default: ''
+      type: string
+    - name: hs_unique_creation_key
+      src: hs_unique_creation_key
+      default: ''
+      type: string
+    - name: hs_updated_by_user_id
+      src: hs_updated_by_user_id
+      default: ''
+      type: double
+    - name: hs_user_ids_of_all_notification_followers
+      src: hs_user_ids_of_all_notification_followers
+      default: ''
+      type: string
+    - name: hs_user_ids_of_all_notification_unfollowers
+      src: hs_user_ids_of_all_notification_unfollowers
+      default: ''
+      type: string
+    - name: hs_user_ids_of_all_owners
+      src: hs_user_ids_of_all_owners
+      default: ''
+      type: string
+    - name: hs_v2_cumulative_time_in_1
+      src: hs_v2_cumulative_time_in_1
+      default: ''
+      type: double
+    - name: hs_v2_cumulative_time_in_2
+      src: hs_v2_cumulative_time_in_2
+      default: ''
+      type: double
+    - name: hs_v2_cumulative_time_in_3
+      src: hs_v2_cumulative_time_in_3
+      default: ''
+      type: double
+    - name: hs_v2_cumulative_time_in_4
+      src: hs_v2_cumulative_time_in_4
+      default: ''
+      type: double
+    - name: hs_v2_date_entered_1
+      src: hs_v2_date_entered_1
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_entered_2
+      src: hs_v2_date_entered_2
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_entered_3
+      src: hs_v2_date_entered_3
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_entered_4
+      src: hs_v2_date_entered_4
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_exited_1
+      src: hs_v2_date_exited_1
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_exited_2
+      src: hs_v2_date_exited_2
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_exited_3
+      src: hs_v2_date_exited_3
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_date_exited_4
+      src: hs_v2_date_exited_4
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hs_v2_latest_time_in_1
+      src: hs_v2_latest_time_in_1
+      default: ''
+      type: double
+    - name: hs_v2_latest_time_in_2
+      src: hs_v2_latest_time_in_2
+      default: ''
+      type: double
+    - name: hs_v2_latest_time_in_3
+      src: hs_v2_latest_time_in_3
+      default: ''
+      type: double
+    - name: hs_v2_latest_time_in_4
+      src: hs_v2_latest_time_in_4
+      default: ''
+      type: double
+    - name: hs_was_imported
+      src: hs_was_imported
+      default: ''
+      type: boolean
+    - name: hubspot_owner_assigneddate
+      src: hubspot_owner_assigneddate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: hubspot_owner_id
+      src: hubspot_owner_id
+      default: ''
+      type: string
+    - name: hubspot_team_id
+      src: hubspot_team_id
+      default: ''
+      type: string
+    - name: last_engagement_date
+      src: last_engagement_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: last_reply_date
+      src: last_reply_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: notes_last_contacted
+      src: notes_last_contacted
+      default: ''
+      type: timestamp
+      format: ''
+    - name: notes_last_updated
+      src: notes_last_updated
+      default: ''
+      type: timestamp
+      format: ''
+    - name: notes_next_activity_date
+      src: notes_next_activity_date
+      default: ''
+      type: timestamp
+      format: ''
+    - name: nps_follow_up_answer
+      src: nps_follow_up_answer
+      default: ''
+      type: string
+    - name: nps_follow_up_question_version
+      src: nps_follow_up_question_version
+      default: ''
+      type: double
+    - name: nps_score
+      src: nps_score
+      default: ''
+      type: string
+    - name: num_contacted_notes
+      src: num_contacted_notes
+      default: ''
+      type: double
+    - name: num_notes
+      src: num_notes
+      default: ''
+      type: double
+    - name: source_ref
+      src: source_ref
+      default: ''
+      type: string
+    - name: source_thread_id
+      src: source_thread_id
+      default: ''
+      type: string
+    - name: source_type
+      src: source_type
+      default: ''
+      type: string
+    - name: subject
+      src: subject
+      default: ''
+      type: string
+    - name: tags
+      src: tags
+      default: ''
+      type: string
+    - name: time_to_close
+      src: time_to_close
+      default: ''
+      type: double
+    - name: time_to_first_agent_reply
+      src: time_to_first_agent_reply
+      default: ''
+      type: double
+    - name: unique_id
+      src: unique_id
+      default: ''
+      type: double
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

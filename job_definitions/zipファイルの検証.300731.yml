@@ -1,0 +1,273 @@
+---
+id: 300731
+name: zipファイルの検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: box
+    box_connection:
+      id: 19
+      name: csdemo-Box
+    folder_id: '267303136031'
+    file_prefix: 立川_Tr_20250301.zip
+    decompression_type: zip
+    stop_when_file_not_found: false
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: CRLF
+      charset: UTF-8
+      columns:
+      - name: IR
+        type: string
+      - name: Column1
+        type: string
+      - name: カラム名1
+        type: string
+      - name: カラム名2
+        type: string
+      - name: カラム名3
+        type: string
+      - name: カラム名4
+        type: string
+      - name: カラム名5
+        type: string
+      - name: カラム名6
+        type: string
+      - name: カラム名7
+        type: string
+      - name: カラム名8
+        type: string
+      - name: カラム名9
+        type: string
+      - name: カラム名10
+        type: string
+      - name: カラム名11
+        type: string
+      - name: カラム名12
+        type: string
+      - name: カラム名13
+        type: string
+      - name: カラム名14
+        type: string
+      - name: カラム名15
+        type: string
+      - name: カラム名16
+        type: string
+      - name: カラム名17
+        type: string
+      - name: カラム名18
+        type: string
+      - name: カラム名19
+        type: string
+      - name: カラム名20
+        type: string
+      - name: カラム名21
+        type: string
+      - name: カラム名22
+        type: string
+      - name: カラム名23
+        type: string
+      - name: カラム名24
+        type: string
+      - name: _7
+        type: long
+      - name: _8
+        type: long
+      - name: _9
+        type: long
+      - name: _10
+        type: long
+      - name: _11
+        type: long
+      - name: _12
+        type: long
+      - name: _13
+        type: long
+      - name: _14
+        type: long
+      quote: "\""
+      escape: "\""
+    decoders:
+    - type: zip
+      match_name: sample_Tr01_20250301.csv
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '250122'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: IR
+      src: IR
+      default: ''
+      type: string
+    - name: Column1
+      src: Column1
+      default: ''
+      type: string
+    - name: カラム名1
+      src: カラム名1
+      default: ''
+      type: string
+    - name: カラム名2
+      src: カラム名2
+      default: ''
+      type: string
+    - name: カラム名3
+      src: カラム名3
+      default: ''
+      type: string
+    - name: カラム名4
+      src: カラム名4
+      default: ''
+      type: string
+    - name: カラム名5
+      src: カラム名5
+      default: ''
+      type: string
+    - name: カラム名6
+      src: カラム名6
+      default: ''
+      type: string
+    - name: カラム名7
+      src: カラム名7
+      default: ''
+      type: string
+    - name: カラム名8
+      src: カラム名8
+      default: ''
+      type: string
+    - name: カラム名9
+      src: カラム名9
+      default: ''
+      type: string
+    - name: カラム名10
+      src: カラム名10
+      default: ''
+      type: string
+    - name: カラム名11
+      src: カラム名11
+      default: ''
+      type: string
+    - name: カラム名12
+      src: カラム名12
+      default: ''
+      type: string
+    - name: カラム名13
+      src: カラム名13
+      default: ''
+      type: string
+    - name: カラム名14
+      src: カラム名14
+      default: ''
+      type: string
+    - name: カラム名15
+      src: カラム名15
+      default: ''
+      type: string
+    - name: カラム名16
+      src: カラム名16
+      default: ''
+      type: string
+    - name: カラム名17
+      src: カラム名17
+      default: ''
+      type: string
+    - name: カラム名18
+      src: カラム名18
+      default: ''
+      type: string
+    - name: カラム名19
+      src: カラム名19
+      default: ''
+      type: string
+    - name: カラム名20
+      src: カラム名20
+      default: ''
+      type: string
+    - name: カラム名21
+      src: カラム名21
+      default: ''
+      type: string
+    - name: カラム名22
+      src: カラム名22
+      default: ''
+      type: string
+    - name: カラム名23
+      src: カラム名23
+      default: ''
+      type: string
+    - name: カラム名24
+      src: カラム名24
+      default: ''
+      type: string
+    - name: _7
+      src: _7
+      default: ''
+      type: long
+    - name: _8
+      src: _8
+      default: ''
+      type: long
+    - name: _9
+      src: _9
+      default: ''
+      type: long
+    - name: _10
+      src: _10
+      default: ''
+      type: long
+    - name: _11
+      src: _11
+      default: ''
+      type: long
+    - name: _12
+      src: _12
+      default: ''
+      type: long
+    - name: _13
+      src: _13
+      default: ''
+      type: long
+    - name: _14
+      src: _14
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

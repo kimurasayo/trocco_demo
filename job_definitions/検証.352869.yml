@@ -1,6 +1,6 @@
 ---
-id: 285297
-name: カラム定義の確認
+id: 352869
+name: 検証
 description: ''
 user:
   id: 6335
@@ -13,7 +13,7 @@ transfer_option:
       id: 325
       name: csdemo-GoogleDrive-kimura
     folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
-    file_match_pattern: Trocco社
+    file_match_pattern: nyuka_jisseki_20250620181312.csv
     decompression_type:
     skip_header_line: false
     stop_when_file_not_found: false
@@ -31,27 +31,42 @@ transfer_option:
       default_timezone: UTC
       default_date: '1970-01-01'
       newline: CRLF
-      charset: UTF-8
+      charset: MS932
       columns:
-      - name: record_date
+      - name: 入荷予定日
         type: timestamp
         format: "%Y-%m-%d"
-      - name: sku
+      - name: 入荷実績日
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: 品番
         type: string
-      - name: branch_name
+      - name: 品名
         type: string
-      - name: branch_code
+      - name: 入荷予定数
         type: long
-      - name: department_code
+      - name: 入荷実績数
         type: long
-      - name: sales_quantity
+      - name: 仕入先
+        type: string
+      - name: 注文番号
+        type: string
+      - name: 発注日
+        type: string
+      - name: 備考
+        type: string
+      - name: ロット
+        type: string
+      - name: 消費期限
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: バーコード
         type: long
-      - name: company_code
-        type: long
-      - name: inventory_code
-        type: long
+      - name: 在庫区分
+        type: string
       quote: "\""
       escape: "\""
+      null_string: ''
     decoders: []
   out:
     type: bigquery
@@ -59,7 +74,7 @@ transfer_option:
       id: 761
       name: csdemo-BigQuery
     dataset: kimura_test
-    table: '1128'
+    table: '0623'
     auto_create_dataset: false
     mode: replace
     location: asia-northeast1
@@ -78,39 +93,65 @@ transfer_option:
     custom_variables: []
   data_settings:
     columns:
-    - name: record_date
-      src: record_date
+    - name: 入荷予定日
+      src: 入荷予定日
       default: ''
       type: timestamp
       format: "%Y-%m-%d"
-    - name: branch_name
-      src: branch_name
+    - name: 入荷実績日
+      src: 入荷実績日
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: 品番
+      src: 品番
       default: ''
       type: string
-    - name: sku
-      src: sku
+    - name: 品名
+      src: 品名
       default: ''
       type: string
-    - name: branch_code
-      src: branch_code
+    - name: 入荷予定数
+      src: 入荷予定数
       default: ''
       type: long
-    - name: department_code
-      src: department_code
+    - name: 入荷実績数
+      src: 入荷実績数
       default: ''
       type: long
-    - name: sales_quantity
-      src: sales_quantity
+    - name: 仕入先
+      src: 仕入先
+      default: ''
+      type: string
+    - name: 注文番号
+      src: 注文番号
+      default: ''
+      type: string
+    - name: 発注日
+      src: 発注日
+      default: ''
+      type: string
+    - name: 備考
+      src: 備考
+      default: ''
+      type: string
+    - name: ロット
+      src: ロット
+      default: ''
+      type: string
+    - name: 消費期限
+      src: 消費期限
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: バーコード
+      src: バーコード
       default: ''
       type: long
-    - name: company_code
-      src: company_code
+    - name: 在庫区分
+      src: 在庫区分
       default: ''
-      type: long
-    - name: inventory_code
-      src: inventory_code
-      default: ''
-      type: long
+      type: string
   is_runnable_concurrently: false
   retry_limit: 0
 labels: []

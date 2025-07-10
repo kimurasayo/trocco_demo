@@ -1,0 +1,240 @@
+---
+id: 337293
+name: 検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: data-000000000000
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: based_on
+        type: string
+      - name: channel
+        type: string
+      - name: ad_account_name
+        type: string
+      - name: ad_campaign_name
+        type: string
+      - name: ad_group_name
+        type: string
+      - name: ad_name
+        type: string
+      - name: ad_url
+        type: string
+      - name: ad_lead_text
+        type: string
+      - name: ad_sub_text2
+        type: string
+      - name: CPM
+        type: string
+      - name: CPC
+        type: string
+      - name: impressions
+        type: string
+      - name: CTR
+        type: string
+      - name: clicks
+        type: string
+      - name: CVR_cv
+        type: string
+      - name: cv
+        type: string
+      - name: CPA_cv
+        type: string
+      - name: CVR_ebis_cv
+        type: string
+      - name: ebis_cv
+        type: string
+      - name: CPA_ebis_cv
+        type: string
+      - name: CVR_ebis_transition
+        type: string
+      - name: ebis_transition
+        type: string
+      - name: CPA_ebis_transition
+        type: string
+      - name: CVR_ebis_cart
+        type: string
+      - name: ebis_cart
+        type: string
+      - name: CPA_ebis_cart
+        type: string
+      - name: cost_including_commission
+        type: string
+      - name: ad_thumbnail_url
+        type: string
+      - name: ad_image_url
+        type: string
+      - name: ad_video_url
+        type: string
+      quote: "\""
+      escape: "\\"
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '250501'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: based_on
+      src: based_on
+      default: ''
+      type: string
+    - name: channel
+      src: channel
+      default: ''
+      type: string
+    - name: ad_account_name
+      src: ad_account_name
+      default: ''
+      type: string
+    - name: ad_campaign_name
+      src: ad_campaign_name
+      default: ''
+      type: string
+    - name: ad_group_name
+      src: ad_group_name
+      default: ''
+      type: string
+    - name: ad_name
+      src: ad_name
+      default: ''
+      type: string
+    - name: ad_url
+      src: ad_url
+      default: ''
+      type: string
+    - name: ad_lead_text
+      src: ad_lead_text
+      default: ''
+      type: string
+    - name: ad_sub_text2
+      src: ad_sub_text2
+      default: ''
+      type: string
+    - name: CPM
+      src: CPM
+      default: ''
+      type: string
+    - name: CPC
+      src: CPC
+      default: ''
+      type: string
+    - name: impressions
+      src: impressions
+      default: ''
+      type: string
+    - name: CTR
+      src: CTR
+      default: ''
+      type: string
+    - name: clicks
+      src: clicks
+      default: ''
+      type: string
+    - name: CVR_cv
+      src: CVR_cv
+      default: ''
+      type: string
+    - name: cv
+      src: cv
+      default: ''
+      type: string
+    - name: CPA_cv
+      src: CPA_cv
+      default: ''
+      type: string
+    - name: CVR_ebis_cv
+      src: CVR_ebis_cv
+      default: ''
+      type: string
+    - name: ebis_cv
+      src: ebis_cv
+      default: ''
+      type: string
+    - name: CPA_ebis_cv
+      src: CPA_ebis_cv
+      default: ''
+      type: string
+    - name: CVR_ebis_transition
+      src: CVR_ebis_transition
+      default: ''
+      type: string
+    - name: ebis_transition
+      src: ebis_transition
+      default: ''
+      type: string
+    - name: CPA_ebis_transition
+      src: CPA_ebis_transition
+      default: ''
+      type: string
+    - name: CVR_ebis_cart
+      src: CVR_ebis_cart
+      default: ''
+      type: string
+    - name: ebis_cart
+      src: ebis_cart
+      default: ''
+      type: string
+    - name: CPA_ebis_cart
+      src: CPA_ebis_cart
+      default: ''
+      type: string
+    - name: cost_including_commission
+      src: cost_including_commission
+      default: ''
+      type: string
+    - name: ad_thumbnail_url
+      src: ad_thumbnail_url
+      default: ''
+      type: string
+    - name: ad_image_url
+      src: ad_image_url
+      default: ''
+      type: string
+    - name: ad_video_url
+      src: ad_video_url
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

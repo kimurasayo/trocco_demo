@@ -1,6 +1,6 @@
 ---
-id: 277421
-name: S3 -> BQ
+id: 225928
+name: gcs -> BQ（検証）
 description: ''
 user:
   id: 6335
@@ -8,20 +8,17 @@ user:
 transfer_option:
   transfer_type: normal
   in:
-    type: s3
-    s3_connection:
-      id: 668
-      name: csdemo-AmazonS3
-    region: ap-northeast-1
-    bucket: trocco-test-kimura
-    path_prefix: 20241107/
-    path_match_pattern: "\\.zip$"
-    decompression_type: zip
-    skip_header_line: false
+    type: gcs
+    gcs_connection:
+      id: 183
+      name: csdemo-GoogleCloudStroage
+    bucket: kimura-test2
+    path_prefix: string_dummy_11.csv
+    decompression_type:
+    parser_file_type: csv
     stop_when_file_not_found: false
-    incremental_loading_type: path
     custom_variables: []
-    incremental_loading_enabled: true
+    incremental_loading_enabled: false
     parser:
       type: csv
       delimiter: ","
@@ -34,31 +31,36 @@ transfer_option:
       stop_on_invalid_record: true
       default_timezone: UTC
       default_date: '1970-01-01'
-      newline: LF
-      charset: UTF-8
+      newline: CRLF
       columns:
-      - name: name
+      - name: c0
         type: string
-      - name: tel
+      - name: c1
         type: string
-      - name: age
+      - name: c2
         type: long
-      - name: other
+      - name: c3
         type: string
-      - name: other2
+      - name: c4
+        type: string
+      - name: c5
+        type: string
+      - name: c6
+        type: string
+      - name: c7
+        type: string
+      - name: c8
         type: string
       quote: "\""
-      escape: "\""
-    decoders:
-    - type: zip
-      match_name:
+      escape: "\\"
+    decoders: []
   out:
     type: bigquery
     bigquery_connection:
       id: 761
       name: csdemo-BigQuery
     dataset: kimura_test
-    table: '1107'
+    table: test_0528
     auto_create_dataset: false
     mode: replace
     location: asia-northeast1
@@ -77,24 +79,40 @@ transfer_option:
     custom_variables: []
   data_settings:
     columns:
-    - name: name
-      src: name
+    - name: c0
+      src: c0
       default: ''
       type: string
-    - name: tel
-      src: tel
+    - name: c1
+      src: c1
       default: ''
       type: string
-    - name: age
-      src: age
+    - name: c2
+      src: c2
       default: ''
       type: long
-    - name: other
-      src: other
+    - name: c3
+      src: c3
       default: ''
       type: string
-    - name: other2
-      src: other2
+    - name: c4
+      src: c4
+      default: ''
+      type: string
+    - name: c5
+      src: c5
+      default: ''
+      type: string
+    - name: c6
+      src: c6
+      default: ''
+      type: string
+    - name: c7
+      src: c7
+      default: ''
+      type: string
+    - name: c8
+      src: c8
       default: ''
       type: string
   is_runnable_concurrently: false

@@ -1,0 +1,58 @@
+---
+id: 335385
+name: postgreSQL -> Snowflake
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: postgresql
+    postgresql_connection:
+      id: 81
+      name: csdemo-PostgreSQL
+    schema: public
+    database: postgres
+    fetch_rows: 10000
+    connect_timeout: 300
+    socket_timeout: 1800
+    default_timezone: UTC
+    column_options:
+    query: SELECT name, age FROM kana_view
+    custom_variables: []
+    incremental_loading_enabled: false
+  out:
+    type: snowflake
+    snowflake_connection:
+      id: 47
+      name: csdemo-Snowflake
+    warehouse: COMPUTE_WH
+    database: '"STG-SIMP_REG_REPORT"'
+    schema: PUBLIC
+    table: TEST
+    retry_limit: 12
+    retry_wait: 1000
+    max_retry_wait: 1800000
+    mode: replace
+    default_timezone: UTC
+    column_options:
+    empty_field_as_null: true
+    batch_size: 50
+    delete_stage_on_error: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: age
+      src: age
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []

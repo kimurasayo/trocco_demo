@@ -1,6 +1,6 @@
 ---
-id: 282281
-name: カラムの重複テスト
+id: 358798
+name: 検証
 description: ''
 user:
   id: 6335
@@ -8,20 +8,19 @@ user:
 transfer_option:
   transfer_type: normal
   in:
-    type: google_drive
-    google_drive_connection:
-      id: 325
-      name: csdemo-GoogleDrive-kimura
-    folder_id: 1uwrFP5N2n9_a9yGaWmF8HN6MNjCN6_tv
-    file_match_pattern: 1107_1.csv
+    type: box
+    box_connection:
+      id: 19
+      name: csdemo-Box
+    folder_id: '267303136031'
+    file_prefix: 0606.csv
     decompression_type:
-    skip_header_line: false
     stop_when_file_not_found: false
     custom_variables: []
     parser:
       type: csv
       delimiter: ","
-      skip_header_lines: 1
+      skip_header_lines: 0
       trim_if_not_quoted: false
       quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
       allow_optional_columns: false
@@ -38,37 +37,29 @@ transfer_option:
       - name: c1
         type: string
       - name: c2
-        type: long
-      - name: c3
-        type: string
-      - name: c4
         type: string
       quote: "\""
       escape: "\""
     decoders: []
   out:
-    type: bigquery
-    bigquery_connection:
-      id: 761
-      name: csdemo-BigQuery
-    dataset: kimura_test
-    table: '1007'
-    auto_create_dataset: false
-    mode: replace
-    location: asia-northeast1
-    open_timeout_sec: 300
-    timeout_sec: 300
-    send_timeout_sec: 300
-    read_timeout_sec: 300
-    retries: 5
-    allow_quoted_newlines: true
-    column_options: []
-    template_table: ''
-    time_partitioning:
-      type:
-      field:
-      expiration_ms:
+    type: box
+    box_connection:
+      id: 19
+      name: csdemo-Box
+    folder_path: "/trocco-cs-demo/kimura_test"
+    file_name: 0704_test
     custom_variables: []
+    formatter:
+      type: csv
+      delimiter: ","
+      newline: CRLF
+      newline_in_field: LF
+      charset: UTF-8
+      quote_policy: MINIMAL
+      quote: "\""
+      escape: "\\"
+      header_line: true
+      default_timezone: UTC
   data_settings:
     columns:
     - name: c0
@@ -81,14 +72,6 @@ transfer_option:
       type: string
     - name: c2
       src: c2
-      default: ''
-      type: long
-    - name: c3
-      src: c3
-      default: ''
-      type: string
-    - name: c4
-      src: c4
       default: ''
       type: string
   is_runnable_concurrently: false

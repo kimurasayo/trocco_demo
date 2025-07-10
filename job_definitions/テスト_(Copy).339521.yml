@@ -1,0 +1,163 @@
+---
+id: 339521
+name: テスト (Copy)
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: backlog
+    backlog_connection:
+      id: 131
+      name: 検証
+    path: api/v2/issues
+    custom_variables: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '0507'
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    partitioning_type: ingestion_time
+    time_partitioning:
+      type: DAY
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: projectId
+      src: projectId
+      default: ''
+      type: long
+    - name: issueKey
+      src: issueKey
+      default: ''
+      type: string
+    - name: keyId
+      src: keyId
+      default: ''
+      type: long
+    - name: issueType
+      src: issueType
+      default: ''
+      type: json
+    - name: summary
+      src: summary
+      default: ''
+      type: string
+    - name: description
+      src: description
+      default: ''
+      type: string
+    - name: resolution
+      src: resolution
+      default: ''
+      type: json
+    - name: priority
+      src: priority
+      default: ''
+      type: json
+    - name: status
+      src: status
+      default: ''
+      type: json
+    - name: assignee
+      src: assignee
+      default: ''
+      type: json
+    - name: category
+      src: category
+      default: ''
+      type: json
+    - name: versions
+      src: versions
+      default: ''
+      type: json
+    - name: milestone
+      src: milestone
+      default: ''
+      type: json
+    - name: startDate
+      src: startDate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: dueDate
+      src: dueDate
+      default: ''
+      type: timestamp
+      format: ''
+    - name: estimatedHours
+      src: estimatedHours
+      default: ''
+      type: long
+    - name: actualHours
+      src: actualHours
+      default: ''
+      type: long
+    - name: parentIssueId
+      src: parentIssueId
+      default: ''
+      type: long
+    - name: createdUser
+      src: createdUser
+      default: ''
+      type: json
+    - name: created
+      src: created
+      default: ''
+      type: timestamp
+      format: ''
+    - name: updatedUser
+      src: updatedUser
+      default: ''
+      type: json
+    - name: updated
+      src: updated
+      default: ''
+      type: timestamp
+      format: ''
+    - name: customFields
+      src: customFields
+      default: ''
+      type: json
+    - name: attachments
+      src: attachments
+      default: ''
+      type: json
+    - name: sharedFiles
+      src: sharedFiles
+      default: ''
+      type: json
+    - name: externalFileLinks
+      src: externalFileLinks
+      default: ''
+      type: json
+    - name: stars
+      src: stars
+      default: ''
+      type: json
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
