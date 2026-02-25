@@ -1,0 +1,206 @@
+---
+id: 423981
+name: 検証2
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: box
+    box_connection:
+      id: 19
+      name: csdemo-Box
+    folder_id: '267303136031'
+    file_prefix: "★TOPPAN海外拠点情報更新用フォーマット_Feb"
+    decompression_type:
+    stop_when_file_not_found: false
+    custom_variables: []
+    parser:
+      type: poi_excel
+      sheets:
+      - サンプルフォーマット
+      skip_header_lines: 2
+      default_timezone: Asia/Tokyo
+      columns:
+      - name: toppan_company_code
+        type: string
+        formula_handling: cashed_value
+      - name: toppan_company_name
+        type: string
+        formula_handling: cashed_value
+      - name: toppan_base_name
+        type: string
+        formula_handling: cashed_value
+      - name: toppan_fullbase_name
+        type: string
+        formula_handling: cashed_value
+      - name: activity_status
+        type: string
+        formula_handling: cashed_value
+      - name: origin_address
+        type: string
+        formula_handling: cashed_value
+      - name: telephone_number
+        type: string
+        formula_handling: cashed_value
+      - name: use_address
+        type: string
+        formula_handling: cashed_value
+      - name: global_region_code
+        type: string
+        formula_handling: cashed_value
+      - name: global_region_name
+        type: string
+        formula_handling: cashed_value
+      - name: country_alpha2_code
+        type: string
+        formula_handling: cashed_value
+      - name: country_name
+        type: string
+        formula_handling: cashed_value
+      - name: prefecture_name
+        type: string
+        formula_handling: cashed_value
+      - name: city_name
+        type: string
+        formula_handling: cashed_value
+      - name: coordinate_y
+        type: string
+        formula_handling: cashed_value
+      - name: coordinate_x
+        type: string
+        formula_handling: cashed_value
+      - name: score
+        type: string
+        formula_handling: cashed_value
+      - name: company_classification
+        type: string
+        formula_handling: cashed_value
+      - name: manufacturing_non_manufacturing
+        type: string
+        formula_handling: cashed_value
+      - name: control_division
+        type: string
+        formula_handling: cashed_value
+      - name: update_date
+        type: string
+        formula_handling: cashed_value
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '0220'
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    retain_column_descriptions: false
+    retain_column_policy_tags: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: toppan_company_code
+      src: toppan_company_code
+      default:
+      type: string
+    - name: toppan_company_name
+      src: toppan_company_name
+      default:
+      type: string
+    - name: toppan_base_name
+      src: toppan_base_name
+      default:
+      type: string
+    - name: toppan_fullbase_name
+      src: toppan_fullbase_name
+      default:
+      type: string
+    - name: activity_status
+      src: activity_status
+      default:
+      type: string
+    - name: origin_address
+      src: origin_address
+      default:
+      type: string
+    - name: telephone_number
+      src: telephone_number
+      default:
+      type: string
+    - name: use_address
+      src: use_address
+      default:
+      type: string
+    - name: global_region_code
+      src: global_region_code
+      default:
+      type: string
+    - name: global_region_name
+      src: global_region_name
+      default:
+      type: string
+    - name: country_alpha2_code
+      src: country_alpha2_code
+      default:
+      type: string
+    - name: country_name
+      src: country_name
+      default:
+      type: string
+    - name: prefecture_name
+      src: prefecture_name
+      default:
+      type: string
+    - name: city_name
+      src: city_name
+      default:
+      type: string
+    - name: coordinate_y
+      src: coordinate_y
+      default:
+      type: string
+    - name: coordinate_x
+      src: coordinate_x
+      default:
+      type: string
+    - name: score
+      src: score
+      default:
+      type: string
+    - name: company_classification
+      src: company_classification
+      default:
+      type: string
+    - name: manufacturing_non_manufacturing
+      src: manufacturing_non_manufacturing
+      default:
+      type: string
+    - name: control_division
+      src: control_division
+      default:
+      type: string
+    - name: update_date
+      src: update_date
+      default:
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
