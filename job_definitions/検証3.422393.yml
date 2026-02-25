@@ -1,0 +1,335 @@
+---
+id: 422393
+name: 検証3
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: s3
+    s3_connection:
+      id: 668
+      name: csdemo-AmazonS3
+    region: ap-northeast-1
+    bucket: trocco-test-kimura
+    path_prefix: '260213'
+    path_match_pattern: ''
+    decompression_type: guess
+    skip_header_line: false
+    stop_when_file_not_found: false
+    custom_variables: []
+    incremental_loading_enabled: false
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: id
+        type: long
+      - name: flag
+        type: long
+      - name: member_flag_name
+        type: string
+      - name: mailaddr
+        type: string
+      - name: hashed_mail
+        type: string
+      - name: nickname
+        type: string
+      - name: sex
+        type: long
+      - name: category_sex
+        type: string
+      - name: birthday
+        type: timestamp
+        format: "%Y%m%d"
+      - name: birthday_cleaned
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: age
+        type: long
+      - name: prefecture
+        type: string
+      - name: region
+        type: string
+      - name: prefecture_master
+        type: string
+      - name: point
+        type: long
+      - name: member_kind
+        type: string
+      - name: premium_expiration_date
+        type: long
+      - name: automatic_continuation
+        type: long
+      - name: year_premium_expiration_date
+        type: long
+      - name: pointcard_point
+        type: long
+      - name: point_expiration_date
+        type: long
+      - name: yidosp_expiration_date
+        type: long
+      - name: yidosp_automatic_continuation
+        type: long
+      - name: yidosp_year_expiration_date
+        type: long
+      - name: yidospa_expiration_date
+        type: long
+      - name: yidospa_automatic_continuation
+        type: long
+      - name: yidospa_year_expiration_date
+        type: long
+      - name: free_invitation
+        type: long
+      - name: favorite_entertainer
+        type: string
+      - name: favorite_theater
+        type: string
+      - name: option
+        type: string
+      - name: YIDMM
+        type: long
+      - name: YIDP
+        type: long
+      - name: YIDP12
+        type: long
+      - name: create_time
+        type: long
+      - name: update_time
+        type: long
+      - name: create_time_cleaned
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S"
+      - name: update_time_cleaned
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S"
+      - name: batch_date
+        type: timestamp
+        format: "%Y-%m-%d"
+      - name: dmp_update_at
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S"
+      - name: ft_f1_flag
+        type: long
+      - name: fot_f1_flag
+        type: long
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '260213'
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: flag
+      src: flag
+      default: ''
+      type: long
+    - name: member_flag_name
+      src: member_flag_name
+      default: ''
+      type: string
+    - name: mailaddr
+      src: mailaddr
+      default: ''
+      type: string
+    - name: hashed_mail
+      src: hashed_mail
+      default: ''
+      type: string
+    - name: nickname
+      src: nickname
+      default: ''
+      type: string
+    - name: sex
+      src: sex
+      default: ''
+      type: long
+    - name: category_sex
+      src: category_sex
+      default: ''
+      type: string
+    - name: birthday
+      src: birthday
+      default: ''
+      type: timestamp
+      format: "%Y%m%d"
+    - name: birthday_cleaned
+      src: birthday_cleaned
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: age
+      src: age
+      default: ''
+      type: long
+    - name: prefecture
+      src: prefecture
+      default: ''
+      type: string
+    - name: region
+      src: region
+      default: ''
+      type: string
+    - name: prefecture_master
+      src: prefecture_master
+      default: ''
+      type: string
+    - name: point
+      src: point
+      default: ''
+      type: long
+    - name: member_kind
+      src: member_kind
+      default: ''
+      type: string
+    - name: premium_expiration_date
+      src: premium_expiration_date
+      default: ''
+      type: long
+    - name: automatic_continuation
+      src: automatic_continuation
+      default: ''
+      type: long
+    - name: year_premium_expiration_date
+      src: year_premium_expiration_date
+      default: ''
+      type: long
+    - name: pointcard_point
+      src: pointcard_point
+      default: ''
+      type: long
+    - name: point_expiration_date
+      src: point_expiration_date
+      default: ''
+      type: long
+    - name: yidosp_expiration_date
+      src: yidosp_expiration_date
+      default: ''
+      type: long
+    - name: yidosp_automatic_continuation
+      src: yidosp_automatic_continuation
+      default: ''
+      type: long
+    - name: yidosp_year_expiration_date
+      src: yidosp_year_expiration_date
+      default: ''
+      type: long
+    - name: yidospa_expiration_date
+      src: yidospa_expiration_date
+      default: ''
+      type: long
+    - name: yidospa_automatic_continuation
+      src: yidospa_automatic_continuation
+      default: ''
+      type: long
+    - name: yidospa_year_expiration_date
+      src: yidospa_year_expiration_date
+      default: ''
+      type: long
+    - name: free_invitation
+      src: free_invitation
+      default: ''
+      type: long
+    - name: favorite_entertainer
+      src: favorite_entertainer
+      default: ''
+      type: string
+    - name: favorite_theater
+      src: favorite_theater
+      default: ''
+      type: string
+    - name: option
+      src: option
+      default: ''
+      type: string
+    - name: YIDMM
+      src: YIDMM
+      default: ''
+      type: long
+    - name: YIDP
+      src: YIDP
+      default: ''
+      type: long
+    - name: YIDP12
+      src: YIDP12
+      default: ''
+      type: long
+    - name: create_time
+      src: create_time
+      default: ''
+      type: long
+    - name: update_time
+      src: update_time
+      default: ''
+      type: long
+    - name: create_time_cleaned
+      src: create_time_cleaned
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S"
+    - name: update_time_cleaned
+      src: update_time_cleaned
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S"
+    - name: batch_date
+      src: batch_date
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d"
+    - name: dmp_update_at
+      src: dmp_update_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S"
+    - name: ft_f1_flag
+      src: ft_f1_flag
+      default: ''
+      type: long
+    - name: fot_f1_flag
+      src: fot_f1_flag
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
