@@ -1,0 +1,107 @@
+---
+id: 420522
+name: json２
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: Mgt-Stg-Auth0LogStream-4-2026-02-09-00-09-24-f82c0198-62ce-4e88-9595-289c1713bc9a.json
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: LF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: version
+        type: long
+      - name: id
+        type: string
+      - name: detail-type
+        type: string
+      - name: source
+        type: string
+      - name: account
+        type: long
+      - name: time
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%z"
+      - name: region
+        type: string
+      - name: resources
+        type: json
+      - name: detail
+        type: json
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: '0209'
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: version
+      src: version
+      default: ''
+      type: long
+    - name: id
+      src: id
+      default: ''
+      type: string
+    - name: detail-type
+      src: detail-type
+      default: ''
+      type: string
+    - name: source
+      src: source
+      default: ''
+      type: string
+    - name: account
+      src: account
+      default: ''
+      type: long
+    - name: time
+      src: time
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%z"
+    - name: region
+      src: region
+      default: ''
+      type: string
+    - name: resources
+      src: resources
+      default: ''
+      type: json
+    - name: detail
+      src: detail
+      default: ''
+      type: json
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
