@@ -1,0 +1,84 @@
+---
+id: 414936
+name: サブテーブル検証
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: 184c8e6d5e4a.csv
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: "$id"
+        type: long
+      - name: property_name
+        type: string
+      - name: claims_tbl.occur_date_c
+        type: string
+      - name: claims_tbl.response_detail
+        type: long
+      - name: repairs_tbl.occur_date_s
+        type: string
+      - name: repairs_tbl.repair_cost
+        type: long
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: kintone
+    kintone_connection:
+      id: 579
+      name: kintone kimura
+    app_id: '491'
+    mode: upsert
+    update_key: "$id"
+    ignore_nulls: false
+    reduce_key: "$id"
+    chunk_size: 100
+  data_settings:
+    columns:
+    - name: "$id"
+      src: "$id"
+      default: ''
+      type: long
+    - name: property_name
+      src: property_name
+      default: ''
+      type: string
+    - name: claims_tbl.occur_date_c
+      src: claims_tbl.occur_date_c
+      default: ''
+      type: string
+    - name: claims_tbl.response_detail
+      src: claims_tbl.response_detail
+      default: ''
+      type: long
+    - name: repairs_tbl.occur_date_s
+      src: repairs_tbl.occur_date_s
+      default: ''
+      type: string
+    - name: repairs_tbl.repair_cost
+      src: repairs_tbl.repair_cost
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
