@@ -1,0 +1,84 @@
+---
+id: 398911
+name: 検証修正1
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: jsonl_1127.jsonl
+    parser:
+      type: jsonl
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      newline: LF
+      charset: UTF-8
+      min_rows_for_guess: 1
+      columns:
+      - name: id
+        type: long
+      - name: event
+        type: string
+      - name: timestamp
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S.%L%z"
+      - name: value
+        type: long
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: jsonl_1127
+    auto_create_dataset: false
+    mode: replace
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options:
+    - name: timestamp
+      type: DATETIME
+      mode: NULLABLE
+      timezone: Asia/Tokyo
+      description: ''
+    template_table: ''
+    time_partitioning:
+      type:
+      field:
+      expiration_ms:
+    retain_column_descriptions: false
+    retain_column_policy_tags: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: event
+      src: event
+      default: ''
+      type: string
+    - name: timestamp
+      src: timestamp
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S.%L%z"
+    - name: value
+      src: value
+      default: ''
+      type: long
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
