@@ -1,0 +1,92 @@
+---
+id: 438213
+name: プログラミングETL検証2
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: local_file
+    file_name: programmingetl.csv
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: uuid
+        type: string
+      - name: eventType
+        type: string
+      - name: published
+        type: timestamp
+        format: "%Y-%m-%d %H:%M:%S %z"
+      - name: target
+        type: json
+      quote: "\""
+      escape: "\""
+    decoders: []
+  out:
+    type: snowflake
+    snowflake_connection:
+      id: 63
+      name: csdemo-Snowflake_keypair
+    warehouse: COMPUTE_WH
+    database: TEST_BY_KIMURA
+    schema: PUBLIC
+    table: TEST_0409
+    retry_limit: 12
+    retry_wait: 1000
+    max_retry_wait: 1800000
+    mode: replace
+    default_timezone: UTC
+    column_options:
+    empty_field_as_null: true
+    batch_size: 50
+    delete_stage_on_error: false
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: uuid
+      src: uuid
+      default: ''
+      type: string
+    - name: eventType
+      src: eventType
+      default: ''
+      type: string
+    - name: published
+      src: published
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%d %H:%M:%S %z"
+    - name: target
+      src: target
+      default: ''
+      type: json
+    row_filters:
+      condition: or
+      conditions:
+      - column: eventType
+        operator: "=="
+        argument: group.user_membership.add
+      - column: eventType
+        operator: "=="
+        argument: group.user_membership.remove
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
