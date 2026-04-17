@@ -1,0 +1,213 @@
+---
+id: 438998
+name: 検証２
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: http
+    url: https://primenumber.zendesk.com/api/v2/help_center/ja/categories/4772466079262/articles
+    method: GET
+    user_agent: ''
+    charset: UTF-8
+    open_timeout: 2000
+    read_timeout: 10000
+    max_retries: 5
+    retry_interval: 10000
+    request_interval: 0
+    input_direct: true
+    success_codes:
+    - '200'
+    params: []
+    custom_variables: []
+    parser:
+      type: jsonpath
+      root: "$.articles"
+      default_timezone: UTC
+      columns:
+      - name: id
+        type: long
+      - name: url
+        type: string
+      - name: html_url
+        type: string
+      - name: author_id
+        type: long
+      - name: comments_disabled
+        type: boolean
+      - name: draft
+        type: boolean
+      - name: promoted
+        type: boolean
+      - name: position
+        type: long
+      - name: vote_sum
+        type: long
+      - name: vote_count
+        type: long
+      - name: section_id
+        type: long
+      - name: created_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%z"
+      - name: updated_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%z"
+      - name: name
+        type: string
+      - name: title
+        type: string
+      - name: source_locale
+        type: string
+      - name: locale
+        type: string
+      - name: outdated
+        type: boolean
+      - name: outdated_locales
+        type: json
+      - name: edited_at
+        type: timestamp
+        format: "%Y-%m-%dT%H:%M:%S%z"
+      - name: user_segment_id
+        type: string
+      - name: permission_group_id
+        type: long
+      - name: content_tag_ids
+        type: json
+      - name: label_names
+        type: json
+      - name: body
+        type: string
+    decoders: []
+  out:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    dataset: kimura_test
+    table: test_260413
+    auto_create_dataset: false
+    mode: append
+    location: asia-northeast1
+    open_timeout_sec: 300
+    timeout_sec: 300
+    send_timeout_sec: 300
+    read_timeout_sec: 300
+    retries: 5
+    allow_quoted_newlines: true
+    column_options: []
+    template_table: ''
+    custom_variables: []
+  data_settings:
+    columns:
+    - name: id
+      src: id
+      default: ''
+      type: long
+    - name: url
+      src: url
+      default: ''
+      type: string
+    - name: html_url
+      src: html_url
+      default: ''
+      type: string
+    - name: author_id
+      src: author_id
+      default: ''
+      type: long
+    - name: comments_disabled
+      src: comments_disabled
+      default: ''
+      type: boolean
+    - name: draft
+      src: draft
+      default: ''
+      type: boolean
+    - name: promoted
+      src: promoted
+      default: ''
+      type: boolean
+    - name: position
+      src: position
+      default: ''
+      type: long
+    - name: vote_sum
+      src: vote_sum
+      default: ''
+      type: long
+    - name: vote_count
+      src: vote_count
+      default: ''
+      type: long
+    - name: section_id
+      src: section_id
+      default: ''
+      type: long
+    - name: created_at
+      src: created_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%z"
+    - name: updated_at
+      src: updated_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%z"
+    - name: name
+      src: name
+      default: ''
+      type: string
+    - name: title
+      src: title
+      default: ''
+      type: string
+    - name: source_locale
+      src: source_locale
+      default: ''
+      type: string
+    - name: locale
+      src: locale
+      default: ''
+      type: string
+    - name: outdated
+      src: outdated
+      default: ''
+      type: boolean
+    - name: outdated_locales
+      src: outdated_locales
+      default: ''
+      type: json
+    - name: edited_at
+      src: edited_at
+      default: ''
+      type: timestamp
+      format: "%Y-%m-%dT%H:%M:%S%z"
+    - name: user_segment_id
+      src: user_segment_id
+      default: ''
+      type: string
+    - name: permission_group_id
+      src: permission_group_id
+      default: ''
+      type: long
+    - name: content_tag_ids
+      src: content_tag_ids
+      default: ''
+      type: json
+    - name: label_names
+      src: label_names
+      default: ''
+      type: json
+    - name: body
+      src: body
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
