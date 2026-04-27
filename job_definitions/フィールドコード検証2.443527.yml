@@ -1,0 +1,104 @@
+---
+id: 443527
+name: フィールドコード検証2
+description: ''
+user:
+  id: 6335
+  email: sayo.kimura+demo@primenumber.co.jp
+transfer_option:
+  transfer_type: normal
+  in:
+    type: bigquery
+    bigquery_connection:
+      id: 761
+      name: csdemo-BigQuery
+    gcs_uri: kimura-sample
+    gcs_uri_format: bucket
+    query: SELECT * FROM `systemn-playground.kimura_test.kintone_0424`
+    location: asia-northeast1
+    temp_dataset: kimura_test
+    cleanup_gcs_files: true
+    use_legacy_sql: false
+    cache: true
+    file_format: CSV
+    bigquery_job_wait_second: 600
+    custom_variables: []
+    parser:
+      type: csv
+      delimiter: ","
+      skip_header_lines: 1
+      trim_if_not_quoted: false
+      quotes_in_quoted_fields: ACCEPT_ONLY_RFC4180_ESCAPED
+      allow_optional_columns: false
+      allow_extra_columns: false
+      max_quoted_size_limit: 131072
+      stop_on_invalid_record: true
+      default_timezone: UTC
+      default_date: '1970-01-01'
+      newline: LF
+      charset: UTF-8
+      columns:
+      - name: ikesu_cd
+        type: string
+      - name: ikesu_name
+        type: string
+      - name: name
+        type: string
+      - name: number
+        type: string
+      - name: other
+        type: string
+      - name: radio
+        type: string
+      - name: text
+        type: string
+      quote: "\""
+      escape: "\""
+    decoders:
+    - type: gzip
+  out:
+    type: kintone
+    kintone_connection:
+      id: 579
+      name: kintone kimura
+    app_id: '528'
+    mode: upsert
+    update_key: number
+    ignore_nulls: false
+    reduce_key: number
+    chunk_size: 100
+  data_settings:
+    columns:
+    - name: subtable.ikesu_cd_
+      src: ikesu_cd
+      default: ''
+      type: string
+    - name: subtable.ikesu_name_
+      src: ikesu_name
+      default: ''
+      type: string
+    - name: name_
+      src: name
+      default: ''
+      type: string
+    - name: number
+      src: number
+      default: ''
+      type: string
+    - name: other
+      src: other
+      default: ''
+      type: string
+    - name: radio
+      src: radio
+      default: ''
+      type: string
+    - name: text
+      src: text
+      default: ''
+      type: string
+  is_runnable_concurrently: false
+  retry_limit: 0
+labels: []
+job_schedules: []
+notifications: []
